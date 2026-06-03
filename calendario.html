@@ -67,6 +67,9 @@
     font-size:.76rem;white-space:nowrap}
   .vid{display:inline-flex;align-items:center;background:var(--accent);color:white;text-decoration:none;
     font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:6px}
+  .altblock{margin-top:14px;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:10px;padding:10px 14px}
+  .altblock .alth{font-size:.82rem;font-weight:700;color:var(--green);margin:0 0 4px}
+  .altblock .ex{border-bottom-color:#cce8cf}
   .restmsg{text-align:center;color:var(--muted);padding:18px 0}
   .restmsg .ic{font-size:2.4rem}
   textarea{width:100%;border:1.5px solid #d8dce8;border-radius:10px;padding:10px;
@@ -130,6 +133,10 @@
   const WEEK = {
     1: {title:'Fútbol ⚽', soccer:true, ex:[
         {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'}
+      ], alt:[
+        {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+        {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'},
+        {n:'Burpees', s:'cardio', r:'al fallo', v:'Burpees'}
       ]},
     2: {title:'Empuje + tracción + core', ex:[
         {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 8kg', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},
@@ -140,6 +147,10 @@
         {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
         {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
         {n:'Giro ruso con KB', s:'russian twists, KB 8kg', r:'al fallo', v:'Russian+Twists+kettlebell'}
+      ], alt:[
+        {n:'Devil press 1 brazo', s:'burpee + snatch, KB 8kg', r:'al fallo/brazo', v:'Single+KB+Devil+Press'},
+        {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},
+        {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
       ]},
     4: {title:'Dorsales + core brace', ex:[
         {n:'Jalón al pecho con banda', s:'banda anclada arriba', r:'al fallo', v:'Band+Lat+Pulldown'},
@@ -238,12 +249,17 @@
     if(plan.rest){
       body.innerHTML='<div class="restmsg"><div class="ic">🧘</div><p>Día de descanso. Movilidad, caminata, hidrátate.</p></div>';
     } else {
-      body.innerHTML = plan.ex.map(e=>{
+      const rowsOf = list => list.map(e=>{
         const reps = e.r ? '<span class="reps">'+e.r+'</span>' : '';
         const vid = e.v ? '<a class="vid" target="_blank" href="https://www.youtube.com/results?search_query='+e.v+'+exercise+form">▶</a>' : '';
         const sub = e.s ? '<small>'+e.s+'</small>' : '';
         return '<div class="ex"><p class="ex-name">'+e.n+sub+vid+'</p>'+reps+'</div>';
       }).join('');
+      let html = rowsOf(plan.ex);
+      if(plan.alt){
+        html += '<div class="altblock"><p class="alth">🏃 Si no hay fútbol, haz este circuito</p>'+rowsOf(plan.alt)+'</div>';
+      }
+      body.innerHTML = html;
     }
 
     document.getElementById('note').value = entry.note || '';

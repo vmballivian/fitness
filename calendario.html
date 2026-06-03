@@ -7,7 +7,7 @@
 <style>
   :root{
     --navy:#2d3a82;--navy-dark:#1f2960;--bg:#f5f6fa;--card:#fff;
-    --text:#1a1d2e;--muted:#6b7088;--fire:#e53935;--soccer:#2e7d32;
+    --text:#1a1d2e;--muted:#6b7088;--fire:#e53935;--green:#2e7d32;--rest:#9aa1b8;--accent:#ff9800;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
@@ -36,37 +36,51 @@
   .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
   .cell{aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;
     align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;
-    background:#f5f6fa;color:var(--text);position:relative;user-select:none}
+    background:#eef0f5;color:var(--text);position:relative;user-select:none}
   .cell.empty{background:transparent;cursor:default}
   .cell.today{outline:2px solid var(--navy);font-weight:800}
-  .cell.logged{color:#fff;font-weight:700}
-  .cell .dot{font-size:.7rem;line-height:1;margin-top:2px}
-  .cell.future{opacity:.45}
+  .cell.done{background:var(--green);color:#fff;font-weight:700}
+  .cell.miss{background:var(--fire);color:#fff}
+  .cell.restday{background:#e4e7ef;color:var(--muted)}
+  .cell .mk{font-size:.72rem;line-height:1;margin-top:1px}
 
   /* hoja inferior */
-  .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:10}
+  .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10}
   .sheet-bg.show{display:block}
   .sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;z-index:11;
     border-radius:18px 18px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom));
-    transform:translateY(100%);transition:transform .22s ease;max-width:520px;margin:0 auto}
+    transform:translateY(100%);transition:transform .22s ease;max-width:520px;margin:0 auto;
+    max-height:88vh;overflow-y:auto}
   .sheet.show{transform:translateY(0)}
-  .sheet h2{margin:0 0 2px;font-size:1.15rem;color:var(--navy)}
-  .sheet .sub{margin:0 0 14px;font-size:.85rem;color:var(--muted)}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-  .chip{border:1.5px solid #d8dce8;background:#fff;color:var(--text);border-radius:20px;
-    padding:8px 14px;font-size:.85rem;font-weight:600;cursor:pointer}
-  .chip.on{color:#fff;border-color:transparent}
+  .sheet .ttl{margin:0 0 1px;font-size:.78rem;color:var(--muted);text-transform:capitalize}
+  .sheet h2{margin:0 0 12px;font-size:1.2rem;color:var(--navy)}
+  .badge{display:inline-block;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;
+    color:#fff;margin-left:8px;vertical-align:middle}
+  .badge.done{background:var(--green)}
+  .badge.miss{background:var(--fire)}
+  .ex{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid #eef0f5;gap:10px}
+  .ex:last-child{border-bottom:none}
+  .ex-name{font-weight:600;font-size:.92rem;margin:0}
+  .ex-name small{display:block;color:var(--muted);font-weight:400;font-style:italic;font-size:.74rem}
+  .reps{background:#ffe5e5;color:var(--fire);font-weight:700;padding:3px 9px;border-radius:8px;
+    font-size:.76rem;white-space:nowrap}
+  .vid{display:inline-flex;align-items:center;background:var(--accent);color:white;text-decoration:none;
+    font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:6px}
+  .restmsg{text-align:center;color:var(--muted);padding:18px 0}
+  .restmsg .ic{font-size:2.4rem}
   textarea{width:100%;border:1.5px solid #d8dce8;border-radius:10px;padding:10px;
-    font-size:.9rem;font-family:inherit;resize:vertical;min-height:60px;margin-bottom:14px}
+    font-size:.9rem;font-family:inherit;resize:vertical;min-height:54px;margin:14px 0}
   .actions{display:flex;gap:10px}
-  .btn{flex:1;border:none;border-radius:10px;padding:13px;font-size:.95rem;font-weight:700;cursor:pointer}
-  .btn.save{background:var(--fire);color:#fff}
-  .btn.del{background:#eef0f7;color:var(--muted)}
+  .btn{flex:1;border:none;border-radius:10px;padding:14px;font-size:.95rem;font-weight:700;cursor:pointer}
+  .btn.done{background:var(--green);color:#fff}
+  .btn.undo{background:#eef0f7;color:var(--muted)}
+  .btn.note{background:var(--navy);color:#fff}
   .btn:active{opacity:.85}
-  .legend{margin-top:16px;font-size:.78rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-  .legend span{display:flex;align-items:center;gap:4px}
-  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
-  .hint{margin-top:14px;text-align:center;font-size:.78rem;color:var(--muted)}
+  .legend{margin-top:16px;font-size:.78rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
+  .hint{margin-top:12px;text-align:center;font-size:.78rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -79,7 +93,7 @@
 <main>
   <div class="stats">
     <div class="stat"><div class="big" id="statMonth">0</div><div class="lbl">este mes</div></div>
-    <div class="stat"><div class="big" id="statStreak">0</div><div class="lbl">racha (días)</div></div>
+    <div class="stat"><div class="big" id="statStreak">0</div><div class="lbl">racha</div></div>
     <div class="stat"><div class="big" id="statTotal">0</div><div class="lbl">total</div></div>
   </div>
 
@@ -93,66 +107,95 @@
     <div class="grid" id="grid"></div>
   </div>
 
-  <div class="legend" id="legend"></div>
-  <p class="hint">Toca un día para marcar tu entreno. Se guarda en este teléfono.</p>
+  <div class="legend">
+    <span><i style="background:#2e7d32"></i>hecho</span>
+    <span><i style="background:#e53935"></i>no lo hiciste</span>
+    <span><i style="background:#e4e7ef"></i>descanso</span>
+    <span><i style="background:#eef0f5;border:1px solid #ccd"></i>pendiente</span>
+  </div>
+  <p class="hint">Toca un día para ver su entreno y marcarlo. Se guarda en este teléfono.</p>
 </main>
 
-<!-- hoja inferior -->
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet">
-  <h2 id="sheetTitle">Día</h2>
-  <p class="sub">¿Qué entrenaste?</p>
-  <div class="chips" id="chips"></div>
+  <p class="ttl" id="sheetDate">día</p>
+  <h2 id="sheetTitle">Entreno <span id="sheetBadge"></span></h2>
+  <div id="sheetBody"></div>
   <textarea id="note" placeholder="Notas: reps, vueltas, cómo te sentiste..."></textarea>
-  <div class="actions">
-    <button class="btn del" id="delBtn">Borrar</button>
-    <button class="btn save" id="saveBtn">Guardar</button>
-  </div>
+  <div class="actions" id="actions"></div>
 </div>
 
 <script>
-  const TYPES = [
-    {key:'empuje',  label:'Empuje',    color:'#e53935'},
-    {key:'espalda', label:'Espalda',   color:'#1565c0'},
-    {key:'core',    label:'Core',      color:'#f57c00'},
-    {key:'piernas', label:'Piernas',   color:'#6a1b9a'},
-    {key:'full',    label:'Full body', color:'#00838f'},
-    {key:'futbol',  label:'Fútbol',    color:'#2e7d32'},
-    {key:'libre',   label:'Libre',     color:'#5d4037'},
-  ];
-  const colorOf = k => (TYPES.find(t=>t.key===k)||{}).color || '#9aa1b8';
-  const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  // Plantilla semanal: 0=domingo ... 6=sábado
+  const WEEK = {
+    1: {title:'Fútbol ⚽', soccer:true, ex:[
+        {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'}
+      ]},
+    2: {title:'Empuje + tracción + core', ex:[
+        {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 8kg', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},
+        {n:'Gorilla rows', s:'KB 8kg', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
+        {n:'Flexiones con toque de hombro', s:'push-up shoulder taps', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
+      ]},
+    3: {title:'Swing + remo + core ⚽', soccer:true, ex:[
+        {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+        {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
+        {n:'Giro ruso con KB', s:'russian twists, KB 8kg', r:'al fallo', v:'Russian+Twists+kettlebell'}
+      ]},
+    4: {title:'Dorsales + core brace', ex:[
+        {n:'Jalón al pecho con banda', s:'banda anclada arriba', r:'al fallo', v:'Band+Lat+Pulldown'},
+        {n:'Face pull con banda o TRX', s:'salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
+        {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
+      ]},
+    5: {title:'Piernas fuerte', ex:[
+        {n:'Sentadilla con salto (mochila)', s:'loaded jump squats', r:'al fallo', v:'Loaded+Jump+Squats'},
+        {n:'Bulgarian split squat', s:'una pierna', r:'al fallo/pierna', v:'Bulgarian+Split+Squat'},
+        {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'}
+      ]},
+    6: {title:'Full body + carry', ex:[
+        {n:'Devil press 1 brazo', s:'burpee + snatch, KB 8kg', r:'al fallo/brazo', v:'Single+KB+Devil+Press'},
+        {n:'Flexión a remo', s:'push-up to row', r:'al fallo', v:'Push-Up+to+Row'},
+        {n:'Suitcase carry', s:'caminar cargado con KB a un lado', r:'30–40m/lado', v:'Suitcase+Carry+kettlebell'}
+      ]},
+    0: {title:'Descanso', rest:true, ex:[]}
+  };
 
-  const STORE = 'fitlog_v1';
+  const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const DOWN = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+
+  const STORE = 'fitlog_v2';
   const load = () => { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e){ return {}; } };
   const save = d => localStorage.setItem(STORE, JSON.stringify(d));
   let data = load();
 
-  const now = new Date();
+  const now = new Date(); now.setHours(0,0,0,0);
   const todayKey = ymd(now);
   let viewY = now.getFullYear(), viewM = now.getMonth();
-  let selKey = null, selType = null;
+  let selKey = null;
 
   function ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function dowOf(key){ const [y,m,d]=key.split('-').map(Number); return new Date(y,m-1,d).getDay(); }
 
   function render(){
     document.getElementById('monthLabel').textContent = MONTHS[viewM]+' '+viewY;
     const grid = document.getElementById('grid');
     grid.innerHTML = '';
     const first = new Date(viewY, viewM, 1);
-    let lead = (first.getDay()+6)%7; // lunes=0
+    let lead = (first.getDay()+6)%7;
     const daysInMonth = new Date(viewY, viewM+1, 0).getDate();
     for(let i=0;i<lead;i++){ const c=document.createElement('div'); c.className='cell empty'; grid.appendChild(c); }
     for(let day=1; day<=daysInMonth; day++){
       const key = viewY+'-'+String(viewM+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+      const plan = WEEK[dowOf(key)];
+      const entry = data[key];
       const c = document.createElement('div');
       c.className = 'cell';
-      const entry = data[key];
-      if(entry){ c.classList.add('logged'); c.style.background = colorOf(entry.type); }
+      let mark = '';
+      if(entry && entry.done){ c.classList.add('done'); mark='✓'; }
+      else if(plan.rest){ c.classList.add('restday'); mark='·'; }
+      else if(key < todayKey){ c.classList.add('miss'); mark='✕'; }
       if(key===todayKey) c.classList.add('today');
-      if(key>todayKey) c.classList.add('future');
-      const num = document.createElement('div'); num.textContent = day; c.appendChild(num);
-      if(entry){ const dot=document.createElement('div'); dot.className='dot'; dot.textContent='💪'; c.appendChild(dot); }
+      const num=document.createElement('div'); num.textContent=day; c.appendChild(num);
+      if(mark){ const m=document.createElement('div'); m.className='mk'; m.textContent=mark; c.appendChild(m); }
       c.onclick = () => openSheet(key);
       grid.appendChild(c);
     }
@@ -160,66 +203,82 @@
   }
 
   function updateStats(){
-    const keys = Object.keys(data);
+    const keys = Object.keys(data).filter(k=>data[k].done);
     document.getElementById('statTotal').textContent = keys.length;
     const mpref = viewY+'-'+String(viewM+1).padStart(2,'0');
     document.getElementById('statMonth').textContent = keys.filter(k=>k.startsWith(mpref)).length;
-    // racha: días consecutivos hasta hoy (o ayer)
-    let streak=0; let d=new Date(now); d.setHours(0,0,0,0);
-    if(!data[ymd(d)]) d.setDate(d.getDate()-1); // si hoy aún no marca, cuenta desde ayer
-    while(data[ymd(d)]){ streak++; d.setDate(d.getDate()-1); }
+    // racha: días consecutivos hacia atrás; descanso no rompe pero no suma; pendiente de hoy no penaliza
+    let streak=0; let d=new Date(now);
+    const isDone = dd => data[ymd(dd)] && data[ymd(dd)].done;
+    const isRest = dd => WEEK[dd.getDay()].rest;
+    if(!isDone(d) && !isRest(d)) d.setDate(d.getDate()-1); // hoy aún pendiente, no rompe
+    while(true){
+      if(isDone(d)){ streak++; d.setDate(d.getDate()-1); }
+      else if(isRest(d)){ d.setDate(d.getDate()-1); }
+      else break;
+    }
     document.getElementById('statStreak').textContent = streak;
-  }
-
-  // chips
-  const chipsWrap = document.getElementById('chips');
-  TYPES.forEach(t=>{
-    const b=document.createElement('button'); b.className='chip'; b.textContent=t.label; b.dataset.key=t.key;
-    b.onclick=()=>{ selType=t.key; paintChips(); };
-    chipsWrap.appendChild(b);
-  });
-  function paintChips(){
-    [...chipsWrap.children].forEach(b=>{
-      const on = b.dataset.key===selType;
-      b.classList.toggle('on', on);
-      b.style.background = on ? colorOf(b.dataset.key) : '#fff';
-    });
   }
 
   function openSheet(key){
     selKey = key;
-    const entry = data[key];
-    selType = entry ? entry.type : null;
-    document.getElementById('note').value = entry ? (entry.note||'') : '';
+    const plan = WEEK[dowOf(key)];
+    const entry = data[key] || {};
     const [y,m,dd]=key.split('-').map(Number);
-    const dateObj=new Date(y,m-1,dd);
-    const dow=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'][dateObj.getDay()];
-    document.getElementById('sheetTitle').textContent = dow+' '+dd+' '+MONTHS[m-1];
-    document.getElementById('delBtn').style.display = entry ? 'block' : 'none';
-    paintChips();
+    document.getElementById('sheetDate').textContent = DOWN[dowOf(key)]+' '+dd+' '+MONTHS[m-1];
+    document.getElementById('sheetTitle').firstChild.textContent = plan.title+' ';
+    // badge
+    const badge = document.getElementById('sheetBadge');
+    badge.className=''; badge.textContent='';
+    if(entry.done){ badge.className='badge done'; badge.textContent='✓ hecho'; }
+    else if(!plan.rest && key<todayKey){ badge.className='badge miss'; badge.textContent='no lo hiciste'; }
+
+    // cuerpo
+    const body=document.getElementById('sheetBody');
+    if(plan.rest){
+      body.innerHTML='<div class="restmsg"><div class="ic">🧘</div><p>Día de descanso. Movilidad, caminata, hidrátate.</p></div>';
+    } else {
+      body.innerHTML = plan.ex.map(e=>{
+        const reps = e.r ? '<span class="reps">'+e.r+'</span>' : '';
+        const vid = e.v ? '<a class="vid" target="_blank" href="https://www.youtube.com/results?search_query='+e.v+'+exercise+form">▶</a>' : '';
+        const sub = e.s ? '<small>'+e.s+'</small>' : '';
+        return '<div class="ex"><p class="ex-name">'+e.n+sub+vid+'</p>'+reps+'</div>';
+      }).join('');
+    }
+
+    document.getElementById('note').value = entry.note || '';
+
+    // acciones
+    const act=document.getElementById('actions');
+    act.innerHTML='';
+    if(plan.rest){
+      const b=document.createElement('button'); b.className='btn note'; b.textContent='Guardar nota';
+      b.onclick=()=>{ data[key]={done:false, note:noteVal()}; if(!data[key].note) delete data[key]; save(data); close(); render(); };
+      act.appendChild(b);
+    } else if(entry.done){
+      const b1=document.createElement('button'); b1.className='btn note'; b1.textContent='Guardar nota';
+      b1.onclick=()=>{ data[key]={done:true, note:noteVal()}; save(data); close(); render(); };
+      const b2=document.createElement('button'); b2.className='btn undo'; b2.textContent='Desmarcar';
+      b2.onclick=()=>{ const n=noteVal(); if(n) data[key]={done:false,note:n}; else delete data[key]; save(data); close(); render(); };
+      act.appendChild(b1); act.appendChild(b2);
+    } else {
+      const b=document.createElement('button'); b.className='btn done'; b.textContent='✓ Marcar hecho';
+      b.onclick=()=>{ data[key]={done:true, note:noteVal()}; save(data); close(); render(); };
+      act.appendChild(b);
+    }
+
     document.getElementById('sheetBg').classList.add('show');
     document.getElementById('sheet').classList.add('show');
   }
-  function closeSheet(){
+  const noteVal=()=>document.getElementById('note').value.trim();
+  function close(){
     document.getElementById('sheetBg').classList.remove('show');
     document.getElementById('sheet').classList.remove('show');
   }
 
-  document.getElementById('saveBtn').onclick=()=>{
-    if(!selType) selType='libre';
-    data[selKey] = { type:selType, note:document.getElementById('note').value.trim() };
-    save(data); closeSheet(); render();
-  };
-  document.getElementById('delBtn').onclick=()=>{
-    delete data[selKey]; save(data); closeSheet(); render();
-  };
-  document.getElementById('sheetBg').onclick=closeSheet;
+  document.getElementById('sheetBg').onclick=close;
   document.getElementById('prev').onclick=()=>{ viewM--; if(viewM<0){viewM=11;viewY--;} render(); };
   document.getElementById('next').onclick=()=>{ viewM++; if(viewM>11){viewM=0;viewY++;} render(); };
-
-  // leyenda
-  const legend=document.getElementById('legend');
-  TYPES.forEach(t=>{ const s=document.createElement('span'); s.innerHTML='<i style="background:'+t.color+'"></i>'+t.label; legend.appendChild(s); });
 
   render();
 </script>

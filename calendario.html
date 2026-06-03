@@ -8,26 +8,38 @@
   :root{
     --navy:#2d3a82;--navy-dark:#1f2960;--bg:#f5f6fa;--card:#fff;
     --text:#1a1d2e;--muted:#6b7088;--fire:#e53935;--green:#2e7d32;--rest:#9aa1b8;--accent:#ff9800;
+    --head1:#2d3a82;--head2:#1f2960;
   }
+  body.fio{--head1:#8e4baf;--head2:#5d2e75}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
     background:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.5;
     padding-bottom:env(safe-area-inset-bottom)}
-  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));
-    color:white;padding:26px 20px;text-align:center}
-  header h1{margin:0;font-size:1.6rem;letter-spacing:-.5px}
-  .back{display:inline-block;margin-top:6px;color:#cfe0ff;text-decoration:none;font-size:.85rem}
-  main{max-width:520px;margin:0 auto;padding:18px 16px 60px}
+  header{background:linear-gradient(135deg,var(--head1),var(--head2));
+    color:white;padding:24px 20px 18px;text-align:center}
+  header h1{margin:0;font-size:1.5rem;letter-spacing:-.5px}
+  header .who{font-size:.85rem;opacity:.85;margin-top:2px}
+  .back{display:inline-block;margin-top:8px;color:#e5ecff;text-decoration:none;font-size:.82rem}
+  .nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .nav a{background:rgba(255,255,255,.16);color:#fff;text-decoration:none;font-size:.78rem;
+    font-weight:600;padding:6px 12px;border-radius:16px}
+  main{max-width:520px;margin:0 auto;padding:16px 16px 60px}
+
+  .warn{background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:12px 16px;
+    font-size:.82rem;color:#7a5a00;margin-bottom:16px}
+  .warn b{color:#9c4a00}
+  .warn details{margin-top:6px}
+  .warn summary{cursor:pointer;font-weight:700;color:#9c4a00}
 
   .stats{display:flex;gap:12px;margin-bottom:16px}
   .stat{flex:1;background:var(--card);border-radius:12px;padding:14px;text-align:center;
     box-shadow:0 1px 3px rgba(0,0,0,.08)}
-  .stat .big{font-size:1.8rem;font-weight:800;color:var(--navy);line-height:1}
+  .stat .big{font-size:1.8rem;font-weight:800;color:var(--head1);line-height:1}
   .stat .lbl{font-size:.72rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 
   .calwrap{background:var(--card);border-radius:14px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .calnav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-  .calnav button{background:#eef0f7;border:none;color:var(--navy);font-size:1.3rem;font-weight:700;
+  .calnav button{background:#eef0f7;border:none;color:var(--head1);font-size:1.3rem;font-weight:700;
     width:40px;height:40px;border-radius:10px;cursor:pointer}
   .calnav button:active{background:#dde2f0}
   .calnav .month{font-size:1.05rem;font-weight:700;text-transform:capitalize}
@@ -38,13 +50,12 @@
     align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;
     background:#eef0f5;color:var(--text);position:relative;user-select:none}
   .cell.empty{background:transparent;cursor:default}
-  .cell.today{outline:2px solid var(--navy);font-weight:800}
+  .cell.today{outline:2px solid var(--head1);font-weight:800}
   .cell.done{background:var(--green);color:#fff;font-weight:700}
   .cell.miss{background:var(--fire);color:#fff}
   .cell.restday{background:#e4e7ef;color:var(--muted)}
   .cell .mk{font-size:.72rem;line-height:1;margin-top:1px}
 
-  /* hoja inferior */
   .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10}
   .sheet-bg.show{display:block}
   .sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;z-index:11;
@@ -53,7 +64,7 @@
     max-height:88vh;overflow-y:auto}
   .sheet.show{transform:translateY(0)}
   .sheet .ttl{margin:0 0 1px;font-size:.78rem;color:var(--muted);text-transform:capitalize}
-  .sheet h2{margin:0 0 12px;font-size:1.2rem;color:var(--navy)}
+  .sheet h2{margin:0 0 12px;font-size:1.2rem;color:var(--head1)}
   .badge{display:inline-block;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;
     color:#fff;margin-left:8px;vertical-align:middle}
   .badge.done{background:var(--green)}
@@ -63,7 +74,7 @@
   .ex:last-child{border-bottom:none}
   .ex-name{font-weight:600;font-size:.92rem;margin:0}
   .ex-name small{display:block;color:var(--muted);font-weight:400;font-style:italic;font-size:.74rem}
-  .reps{background:#ffe5e5;color:var(--fire);font-weight:700;padding:3px 9px;border-radius:8px;
+  .reps{background:#eef0f7;color:var(--head1);font-weight:700;padding:3px 9px;border-radius:8px;
     font-size:.76rem;white-space:nowrap}
   .vid{display:inline-flex;align-items:center;background:var(--accent);color:white;text-decoration:none;
     font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:6px}
@@ -78,7 +89,7 @@
   .btn{flex:1;border:none;border-radius:10px;padding:14px;font-size:.95rem;font-weight:700;cursor:pointer}
   .btn.done{background:var(--green);color:#fff}
   .btn.undo{background:#eef0f7;color:var(--muted)}
-  .btn.note{background:var(--navy);color:#fff}
+  .btn.note{background:var(--head1);color:#fff}
   .btn:active{opacity:.85}
   .legend{margin-top:16px;font-size:.78rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
   .legend span{display:flex;align-items:center;gap:5px}
@@ -90,10 +101,14 @@
 
 <header>
   <h1>📆 Calendario de Entrenos</h1>
-  <a class="back" href="index.html">← volver al inicio</a>
+  <div class="who" id="who"></div>
+  <a class="back" href="index.html">← cambiar usuario</a>
+  <div class="nav" id="nav"></div>
 </header>
 
 <main>
+  <div id="warnSlot"></div>
+
   <div class="stats">
     <div class="stat"><div class="big" id="statMonth">0</div><div class="lbl">este mes</div></div>
     <div class="stat"><div class="big" id="statStreak">0</div><div class="lbl">racha</div></div>
@@ -124,13 +139,18 @@
   <p class="ttl" id="sheetDate">día</p>
   <h2 id="sheetTitle">Entreno <span id="sheetBadge"></span></h2>
   <div id="sheetBody"></div>
-  <textarea id="note" placeholder="Notas: reps, vueltas, cómo te sentiste..."></textarea>
+  <textarea id="note" placeholder="Notas: reps, cómo te sentiste..."></textarea>
   <div class="actions" id="actions"></div>
 </div>
 
 <script>
-  // Plantilla semanal: 0=domingo ... 6=sábado
-  const WEEK = {
+  // ===== Usuario =====
+  const params = new URLSearchParams(location.search);
+  const user = params.get('user')==='fio' ? 'fio' : 'vic';
+  if(user==='fio') document.body.classList.add('fio');
+
+  // ===== Plantillas semanales (0=domingo ... 6=sábado) =====
+  const WEEK_VIC = {
     1: {title:'Fútbol ⚽', soccer:true, ex:[
         {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'}
       ], alt:[
@@ -153,8 +173,8 @@
         {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
       ]},
     4: {title:'Dorsales + core brace', ex:[
-        {n:'Jalón al pecho con banda', s:'banda anclada arriba', r:'al fallo', v:'Band+Lat+Pulldown'},
-        {n:'Face pull con banda o TRX', s:'salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
+        {n:'Jalón al pecho con banda', s:'banda 30 kg, anclada arriba', r:'al fallo', v:'Band+Lat+Pulldown'},
+        {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
         {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
       ]},
     5: {title:'Piernas fuerte', ex:[
@@ -170,10 +190,63 @@
     0: {title:'Descanso', rest:true, ex:[]}
   };
 
+  // Fio: 2º trimestre. Moderado, NUNCA al fallo. Nada de saltos ni boca arriba.
+  const WEEK_FIO = {
+    1: {title:'Piernas y glúteos (suave)', ex:[
+        {n:'Sentadilla peso corporal', s:'controlada, baja hasta donde estés cómoda', r:'10–12', v:'prenatal+bodyweight+squat'},
+        {n:'Zancada estática con apoyo', s:'mano en silla o pared para equilibrio', r:'8/pierna', v:'prenatal+supported+lunge'},
+        {n:'Patada de glúteo con banda (de pie)', s:'de pie, banda 20 kg', r:'12/pierna', v:'standing+glute+kickback+band'},
+        {n:'Gato-camello', s:'movilidad de espalda en 4 apoyos', r:'8 lentas', v:'cat+cow+stretch+pregnancy'}
+      ]},
+    2: {title:'Caminata + movilidad', walk:true, ex:[
+        {n:'Caminata', s:'paso cómodo, deberías poder conversar', r:'20 min', v:'prenatal+walking'},
+        {n:'Círculos de cadera + estiramiento suave', s:'al terminar', r:'5 min', v:'prenatal+hip+mobility+stretch'}
+      ]},
+    3: {title:'Tren superior (de pie / inclinado)', ex:[
+        {n:'Flexión inclinada (pared o mesa)', s:'nunca boca abajo en el suelo', r:'10–12', v:'incline+wall+push-up'},
+        {n:'Remo con banda', s:'de pie, banda 20 kg, aprieta omóplatos', r:'12–15', v:'standing+resistance+band+row'},
+        {n:'Press de hombro con banda', s:'banda 10 kg, no aguantes la respiración', r:'10–12', v:'standing+band+shoulder+press'},
+        {n:'Bird dog', s:'4 apoyos, activa el core profundo', r:'8/lado', v:'bird+dog+exercise'}
+      ]},
+    4: {title:'Core seguro + suelo pélvico', ex:[
+        {n:'Bird dog', s:'brazo y pierna opuestos, sin arquear', r:'8/lado', v:'bird+dog+exercise'},
+        {n:'Plancha lateral con rodilla apoyada', s:'corta, sin forzar', r:'20 seg/lado', v:'modified+side+plank+knee'},
+        {n:'Inclinación pélvica de pie', s:'pelvic tilt contra la pared', r:'12 lentas', v:'standing+pelvic+tilt'},
+        {n:'Kegels (suelo pélvico)', s:'aprieta y suelta, respira normal', r:'10', v:'kegel+pelvic+floor+pregnancy'}
+      ]},
+    5: {title:'Full body suave', ex:[
+        {n:'Sentadilla peso corporal', s:'controlada', r:'10–12', v:'prenatal+bodyweight+squat'},
+        {n:'Remo con banda', s:'de pie, banda 20 kg', r:'12–15', v:'standing+resistance+band+row'},
+        {n:'Flexión inclinada', s:'pared o mesa', r:'10–12', v:'incline+wall+push-up'},
+        {n:'Marcha de pie (rodilla arriba)', s:'core y equilibrio, de pie', r:'30–40 seg', v:'standing+marches+exercise'}
+      ]},
+    6: {title:'Caminata + yoga prenatal', walk:true, ex:[
+        {n:'Caminata', s:'paso cómodo', r:'20 min', v:'prenatal+walking'},
+        {n:'Estiramiento / yoga prenatal', s:'suave, evita posturas boca arriba prolongadas', r:'5–10 min', v:'prenatal+yoga+stretch'}
+      ]},
+    0: {title:'Descanso', rest:true, ex:[]}
+  };
+
+  const WEEK = user==='fio' ? WEEK_FIO : WEEK_VIC;
+  const STORE = user==='fio' ? 'fitlog_fio' : 'fitlog_v2';
+
+  // ===== Cabecera por usuario =====
+  document.getElementById('who').textContent = user==='fio' ? '🤰 Fio · plan prenatal (2º trimestre)' : '🏋️ Vic · alta intensidad';
+  const nav = document.getElementById('nav');
+  if(user==='fio'){
+    nav.innerHTML = '<a href="semana-fio.html">📅 Mi semana</a>';
+    document.getElementById('warnSlot').innerHTML =
+      '<div class="warn"><b>Embarazo · 2º trimestre.</b> Intensidad moderada, nunca al fallo. Si puedes conversar mientras te mueves, vas bien. Nada de saltos, nada boca arriba en el suelo, no aguantes la respiración.'+
+      '<details><summary>Para de inmediato y llama a tu matrona si…</summary>'+
+      'mareo o desmayo, sangrado o pérdida de líquido, contracciones, dolor de pecho, dolor de cabeza fuerte, dolor o hinchazón en una pierna, o si sientes menos movimiento del bebé. '+
+      'Esta es una guía general: confírmala con tu médico o matrona.</details></div>';
+  } else {
+    nav.innerHTML = '<a href="semana-intermedio.html">📅 Semana</a><a href="ejercicios-catalogo.html">📚 Catálogo</a><a href="sustitutos-coach.html">🏋️ Sustitutos</a>';
+  }
+
+  // ===== Estado =====
   const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const DOWN = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-
-  const STORE = 'fitlog_v2';
   const load = () => { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e){ return {}; } };
   const save = d => localStorage.setItem(STORE, JSON.stringify(d));
   let data = load();
@@ -188,8 +261,7 @@
 
   function render(){
     document.getElementById('monthLabel').textContent = MONTHS[viewM]+' '+viewY;
-    const grid = document.getElementById('grid');
-    grid.innerHTML = '';
+    const grid = document.getElementById('grid'); grid.innerHTML = '';
     const first = new Date(viewY, viewM, 1);
     let lead = (first.getDay()+6)%7;
     const daysInMonth = new Date(viewY, viewM+1, 0).getDate();
@@ -198,16 +270,15 @@
       const key = viewY+'-'+String(viewM+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
       const plan = WEEK[dowOf(key)];
       const entry = data[key];
-      const c = document.createElement('div');
-      c.className = 'cell';
-      let mark = '';
+      const c = document.createElement('div'); c.className='cell';
+      let mark='';
       if(entry && entry.done){ c.classList.add('done'); mark='✓'; }
       else if(plan.rest){ c.classList.add('restday'); mark='·'; }
       else if(key < todayKey){ c.classList.add('miss'); mark='✕'; }
       if(key===todayKey) c.classList.add('today');
       const num=document.createElement('div'); num.textContent=day; c.appendChild(num);
       if(mark){ const m=document.createElement('div'); m.className='mk'; m.textContent=mark; c.appendChild(m); }
-      c.onclick = () => openSheet(key);
+      c.onclick=()=>openSheet(key);
       grid.appendChild(c);
     }
     updateStats();
@@ -218,11 +289,10 @@
     document.getElementById('statTotal').textContent = keys.length;
     const mpref = viewY+'-'+String(viewM+1).padStart(2,'0');
     document.getElementById('statMonth').textContent = keys.filter(k=>k.startsWith(mpref)).length;
-    // racha: días consecutivos hacia atrás; descanso no rompe pero no suma; pendiente de hoy no penaliza
     let streak=0; let d=new Date(now);
     const isDone = dd => data[ymd(dd)] && data[ymd(dd)].done;
     const isRest = dd => WEEK[dd.getDay()].rest;
-    if(!isDone(d) && !isRest(d)) d.setDate(d.getDate()-1); // hoy aún pendiente, no rompe
+    if(!isDone(d) && !isRest(d)) d.setDate(d.getDate()-1);
     while(true){
       if(isDone(d)){ streak++; d.setDate(d.getDate()-1); }
       else if(isRest(d)){ d.setDate(d.getDate()-1); }
@@ -238,13 +308,10 @@
     const [y,m,dd]=key.split('-').map(Number);
     document.getElementById('sheetDate').textContent = DOWN[dowOf(key)]+' '+dd+' '+MONTHS[m-1];
     document.getElementById('sheetTitle').firstChild.textContent = plan.title+' ';
-    // badge
-    const badge = document.getElementById('sheetBadge');
-    badge.className=''; badge.textContent='';
+    const badge = document.getElementById('sheetBadge'); badge.className=''; badge.textContent='';
     if(entry.done){ badge.className='badge done'; badge.textContent='✓ hecho'; }
     else if(!plan.rest && key<todayKey){ badge.className='badge miss'; badge.textContent='no lo hiciste'; }
 
-    // cuerpo
     const body=document.getElementById('sheetBody');
     if(plan.rest){
       body.innerHTML='<div class="restmsg"><div class="ic">🧘</div><p>Día de descanso. Movilidad, caminata, hidrátate.</p></div>';
@@ -256,20 +323,15 @@
         return '<div class="ex"><p class="ex-name">'+e.n+sub+vid+'</p>'+reps+'</div>';
       }).join('');
       let html = rowsOf(plan.ex);
-      if(plan.alt){
-        html += '<div class="altblock"><p class="alth">🏃 Si no hay fútbol, haz este circuito</p>'+rowsOf(plan.alt)+'</div>';
-      }
+      if(plan.alt){ html += '<div class="altblock"><p class="alth">🏃 Si no hay fútbol, haz este circuito</p>'+rowsOf(plan.alt)+'</div>'; }
       body.innerHTML = html;
     }
 
     document.getElementById('note').value = entry.note || '';
-
-    // acciones
-    const act=document.getElementById('actions');
-    act.innerHTML='';
+    const act=document.getElementById('actions'); act.innerHTML='';
     if(plan.rest){
       const b=document.createElement('button'); b.className='btn note'; b.textContent='Guardar nota';
-      b.onclick=()=>{ data[key]={done:false, note:noteVal()}; if(!data[key].note) delete data[key]; save(data); close(); render(); };
+      b.onclick=()=>{ const n=noteVal(); if(n) data[key]={done:false,note:n}; else delete data[key]; save(data); close(); render(); };
       act.appendChild(b);
     } else if(entry.done){
       const b1=document.createElement('button'); b1.className='btn note'; b1.textContent='Guardar nota';

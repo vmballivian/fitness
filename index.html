@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mi Fitness</title>
+<title>Fitness</title>
 <style>
   *{box-sizing:border-box}
   body{
@@ -12,46 +12,39 @@
     color:white;margin:0;min-height:100vh;
     display:flex;align-items:center;justify-content:center;padding:24px;
   }
-  .wrap{max-width:700px;width:100%;text-align:center}
-  h1{font-size:2.5rem;margin:0 0 8px;letter-spacing:-1px}
-  .sub{opacity:.8;margin:0 0 32px}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .wrap{max-width:640px;width:100%;text-align:center}
+  h1{font-size:2.4rem;margin:0 0 6px;letter-spacing:-1px}
+  .sub{opacity:.8;margin:0 0 34px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:480px){.cards{grid-template-columns:1fr}}
   a.card{
-    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
-    border-radius:14px;padding:24px;text-decoration:none;color:white;
-    transition:transform .2s,background .2s;display:block;
+    border-radius:18px;padding:34px 24px;text-decoration:none;color:white;
+    transition:transform .2s,box-shadow .2s;display:block;border:1px solid rgba(255,255,255,.18);
   }
-  a.card:hover{background:rgba(255,255,255,.15);transform:translateY(-3px)}
-  .icon{font-size:2.5rem;margin-bottom:10px}
-  .card h2{margin:8px 0 6px;font-size:1.15rem}
-  .card p{margin:0;font-size:.85rem;opacity:.8}
-  .footer{margin-top:32px;font-size:.8rem;opacity:.6}
+  a.card:active{transform:scale(.98)}
+  a.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .vic{background:linear-gradient(135deg,#e53935,#b71c1c)}
+  .fio{background:linear-gradient(135deg,#8e4baf,#5d2e75)}
+  .ava{font-size:3.4rem;margin-bottom:8px}
+  .card h2{margin:6px 0 4px;font-size:1.5rem}
+  .card p{margin:0;font-size:.85rem;opacity:.9}
+  .footer{margin-top:34px;font-size:.8rem;opacity:.6}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>💪 Fitness</h1>
-  <p class="sub">Proyecto personal · 🔥 alta intensidad</p>
+  <p class="sub">¿Quién entrena hoy?</p>
   <div class="cards">
-    <a class="card" href="calendario.html">
-      <div class="icon">📆</div>
-      <h2>Calendario</h2>
-      <p>Marca cada entreno y mira tu racha</p>
+    <a class="card vic" href="calendario.html?user=vic">
+      <div class="ava">🏋️</div>
+      <h2>Vic</h2>
+      <p>Alta intensidad · al fallo · fútbol</p>
     </a>
-    <a class="card" href="semana-intermedio.html">
-      <div class="icon">📅</div>
-      <h2>Mi semana</h2>
-      <p>Circuitos full body al fallo en 20 min</p>
-    </a>
-    <a class="card" href="ejercicios-catalogo.html">
-      <div class="icon">📚</div>
-      <h2>Catálogo de ejercicios</h2>
-      <p>Todos los movimientos por grupo y fase</p>
-    </a>
-    <a class="card" href="sustitutos-coach.html">
-      <div class="icon">🏋️</div>
-      <h2>Sustitutos del coach</h2>
-      <p>Reemplazos creativos con TRX, bandas y KB 8kg</p>
+    <a class="card fio" href="calendario.html?user=fio">
+      <div class="ava">🤰</div>
+      <h2>Fio</h2>
+      <p>Prenatal · moderado · 2º trimestre</p>
     </a>
   </div>
   <p class="footer">el que aparece siempre, gana 💪</p>

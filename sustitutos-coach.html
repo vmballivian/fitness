@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sustitutos del Coach — Sin barra, KB 8kg, TRX, bandas</title>
+<style>
+  :root{
+    --navy:#2d3a82;
+    --navy-dark:#1f2960;
+    --bg:#f5f6fa;
+    --card:#ffffff;
+    --text:#1a1d2e;
+    --muted:#6b7088;
+    --red:#e53935;
+    --green:#4caf50;
+    --orange:#ff9800;
+    --purple:#7b1fa2;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    background:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.55;
+  }
+  header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:white;padding:32px 24px;text-align:center;
+  }
+  header h1{margin:0;font-size:2rem;letter-spacing:-.5px}
+  header p{margin:8px 0 0;opacity:.85}
+  .coach-tag{
+    display:inline-block;background:var(--orange);color:white;
+    padding:4px 12px;border-radius:20px;font-size:.78rem;font-weight:700;
+    margin-top:10px;letter-spacing:.5px;
+  }
+  main{max-width:1100px;margin:0 auto;padding:24px}
+  .intro{
+    background:white;padding:20px 24px;border-radius:12px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);margin-bottom:24px;
+  }
+  .intro h2{margin:0 0 10px;color:var(--navy);font-size:1.2rem}
+  .intro p{margin:6px 0;font-size:.92rem}
+  .equipment{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .eq{
+    background:#eef0f7;color:var(--navy);font-weight:600;
+    padding:5px 12px;border-radius:20px;font-size:.78rem;
+  }
+  .no-eq{background:#ffeaea;color:var(--red);text-decoration:line-through}
+  section.muscle{margin-bottom:36px}
+  section.muscle > h2{
+    color:var(--navy);font-size:1.6rem;margin:0 0 18px;
+    border-bottom:3px solid var(--navy);padding-bottom:8px;
+  }
+  .swap-card{
+    background:white;border-radius:12px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);margin-bottom:16px;
+    overflow:hidden;
+  }
+  .swap-head{
+    background:#fff4f4;border-left:4px solid var(--red);
+    padding:14px 20px;display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:10px;
+  }
+  .swap-head .orig{font-weight:700;color:var(--text);font-size:1.05rem}
+  .swap-head .why{font-size:.8rem;color:var(--muted);font-style:italic}
+  .swap-head .badge{
+    background:var(--red);color:white;font-size:.7rem;font-weight:700;
+    padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;
+  }
+  .options{padding:0}
+  .opt{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:14px 20px;border-bottom:1px solid #eef0f5;
+  }
+  .opt:last-child{border-bottom:none}
+  .opt .num{
+    flex-shrink:0;width:32px;height:32px;border-radius:50%;
+    background:var(--green);color:white;display:flex;
+    align-items:center;justify-content:center;font-weight:700;font-size:.95rem;
+  }
+  .opt .body{flex:1}
+  .opt .name{font-weight:700;font-size:1rem;margin:0 0 2px;color:var(--navy)}
+  .opt .equip{font-size:.78rem;color:var(--muted);margin:0 0 6px}
+  .opt .equip .pill{
+    display:inline-block;background:#eef0f7;color:var(--navy);
+    padding:2px 8px;border-radius:10px;font-weight:600;margin-right:4px;
+  }
+  .opt .desc{font-size:.88rem;margin:0 0 6px;color:#333}
+  .opt .reps{
+    display:inline-block;background:#fff7e6;color:#7a4a00;
+    padding:3px 10px;border-radius:6px;font-size:.8rem;font-weight:700;
+  }
+  .tips{
+    background:white;border-radius:12px;padding:24px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);margin-top:32px;
+  }
+  .tips h2{margin:0 0 14px;color:var(--navy);font-size:1.3rem}
+  .tip-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;
+  }
+  .tip{
+    background:#f8f9fc;border-left:3px solid var(--purple);
+    padding:14px 16px;border-radius:8px;
+  }
+  .tip h3{margin:0 0 6px;font-size:1rem;color:var(--purple)}
+  .tip p{margin:0;font-size:.86rem}
+  .principle{
+    background:#e8f5e9;border-left:4px solid var(--green);
+    padding:14px 20px;border-radius:8px;margin-bottom:20px;font-size:.92rem;
+  }
+  .principle strong{color:var(--green)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏋️ Sustitutos del Coach</h1>
+  <p>Cada ejercicio del PDF original que NO puedes hacer en casa, con su reemplazo</p>
+  <span class="coach-tag">Adaptado a tu setup</span>
+</header>
+
+<main>
+
+<div class="intro">
+  <h2>🛠 Tu setup</h2>
+  <div class="equipment">
+    <span class="eq">TRX (anclado en puerta/gancho)</span>
+    <span class="eq">Bandas elásticas</span>
+    <span class="eq">1 kettlebell de 8 kg</span>
+    <span class="eq">Mochila + libros</span>
+    <span class="eq no-eq">Barra de dominadas</span>
+    <span class="eq no-eq">Paralelas / dip bars</span>
+    <span class="eq no-eq">Chaleco de peso</span>
+  </div>
+  <p style="margin-top:14px">Esta guía cubre los ejercicios del PDF DailyRepsGuy que requieren equipo que no tienes, con 1–3 reemplazos por movimiento. La regla: si la alternativa entrena el mismo patrón, sirve.</p>
+</div>
+
+<div class="principle">
+  <strong>Principio del coach:</strong> con TRX puedes simular casi cualquier patrón de tracción cambiando el ángulo del cuerpo. Más vertical = más fácil. Más horizontal (cuerpo paralelo al piso) = más difícil. Eso es tu "agregar peso".
+</div>
+
+<!-- ARMS / CHEST -->
+<section class="muscle">
+<h2>💪 Pecho y Brazos</h2>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Chin-ups / Pull-ups</div>
+      <div class="why">Requieren barra de dominadas que no tienes</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX Bicep Curl</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Sujetas las correas con palmas hacia arriba, inclinas el cuerpo hacia atrás, flexionas codos llevando manos a la frente. Más inclinación hacia atrás = más peso de tu cuerpo.</p>
+        <span class="reps">10–15 reps · 3–4 sets</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">TRX High Row (alto, hacia la cara)</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Remo con codos altos, tiras los puños hacia las orejas. Trabaja parte alta de espalda y bíceps como un chin-up. Estímulo muy parecido.</p>
+        <span class="reps">12 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">3</div>
+      <div class="body">
+        <p class="name">Band Curl con anclaje al piso</p>
+        <p class="equip"><span class="pill">Banda</span></p>
+        <p class="desc">Pisas la banda y haces curl con ambas manos. Opción finisher para volumen.</p>
+        <span class="reps">15–20 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Dips en paralelas (parallel bars)</div>
+      <div class="why">No tienes barras paralelas</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX Dips</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Soportas tu peso entre las dos manijas del TRX, brazos extendidos. Bajas flexionando codos y subes. Muy exigente para tríceps y core.</p>
+        <span class="reps">6–10 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">Fondos en silla con pies elevados (ya en PDF)</p>
+        <p class="equip"><span class="pill">2 sillas</span></p>
+        <p class="desc">Silla detrás (manos), otra adelante (pies). Aumenta el rango y la carga sobre tríceps.</p>
+        <span class="reps">10–12 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Handstand push-ups</div>
+      <div class="why">Riesgo sin pared y skill avanzada</div>
+    </div>
+    <span class="badge">Alternar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">Pike Push-Up con pies en TRX</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Pies en las correas del TRX, cadera bien arriba (forma de V). Bajas la cabeza al piso, empujas. Carga 60–70% del peso sobre los hombros como un handstand más seguro.</p>
+        <span class="reps">8–10 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">Single-arm KB Shoulder Press</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">El 8kg single-arm es ideal aquí. Para hacerlo más duro: pausa de 2 seg arriba y bajada lenta de 3 seg.</p>
+        <span class="reps">8–10/brazo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Push-ups con peso añadido (Fase 4)</div>
+      <div class="why">No tienes chaleco de peso</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">Push-Up con mochila cargada en la espalda</p>
+        <p class="equip"><span class="pill">Mochila</span></p>
+        <p class="desc">Mochila bien apretada (correa de pecho) para que no se mueva. 10–15 kg de libros es comparable a un chaleco.</p>
+        <span class="reps">8–12 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">TRX Push-Up (pies en TRX)</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">La inestabilidad triplica el reclutamiento del core sin necesidad de añadir peso. Si lo combinas con mochila, es brutal.</p>
+        <span class="reps">8–12 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- LEGS -->
+<section class="muscle">
+<h2>🦵 Piernas</h2>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Goblet Squat (KB 2 manos)</div>
+      <div class="why">8 kg al pecho no es estímulo suficiente</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">Backpack Squat</p>
+        <p class="equip"><span class="pill">Mochila</span></p>
+        <p class="desc">Mochila cargada al pecho o sobre los hombros. Llénala hasta que 12–15 reps sean exigentes (apunta a 12–18 kg).</p>
+        <span class="reps">15 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">Suitcase Squat con KB (a un lado)</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">KB colgando a un costado del cuerpo. Sentadilla profunda. Trabajo asimétrico que activa core y oblicuos.</p>
+        <span class="reps">10/lado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Pistol Squat (Fase 3)</div>
+      <div class="why">Demanda equilibrio y fuerza unilateral extrema</div>
+    </div>
+    <span class="badge">Progresión</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX-Assisted Pistol Squat</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Sujetas el TRX con las dos manos para regular cuánto peso quitas. Te enseña el patrón y la profundidad sin caerte. Esta es la mejor progresión que existe para pistol squat en casa.</p>
+        <span class="reps">5–8/pierna</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">Box Pistol (sentadilla a una pierna en silla)</p>
+        <p class="equip"><span class="pill">Silla</span></p>
+        <p class="desc">Te sientas controladamente en una silla con una sola pierna y vuelves a subir. Quita altura de la silla cuando te sea fácil.</p>
+        <span class="reps">6–10/pierna</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Kettlebell Overhead Squat (2 manos)</div>
+      <div class="why">8 kg con 2 manos sobre la cabeza no carga lo suficiente</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">Single-Arm KB Overhead Squat</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">KB en una mano sobre la cabeza, sentadilla profunda. Pide muchísima estabilidad de hombro y core. Mucho más duro de lo que parece.</p>
+        <span class="reps">6–8/brazo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Romanian Deadlift (RDL) pesado</div>
+      <div class="why">8 kg se queda corto para RDL a 2 manos</div>
+    </div>
+    <span class="badge">Adaptar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">Single-Leg RDL con KB</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">Pierna trasera levantada, KB en la mano opuesta, bisagra de cadera bajando torso. Trabaja isquios + glúteo + equilibrio. Aquí 8kg single-arm es perfecto.</p>
+        <span class="reps">8–10/pierna</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">RDL con mochila cargada</p>
+        <p class="equip"><span class="pill">Mochila</span></p>
+        <p class="desc">Mochila pesada (15–20 kg) sujeta como kettlebell delante. Mantiene la bisagra de cadera con carga apropiada.</p>
+        <span class="reps">12 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- ABS -->
+<section class="muscle">
+<h2>🔥 Abdomen</h2>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Hanging Knee Raises / Leg Raises</div>
+      <div class="why">Requieren barra de la que colgarse</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX Knee Tucks</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Pies en TRX, posición de plancha alta, llevas rodillas al pecho. Como hanging knee raises pero invertido. <strong>Mejor opción.</strong></p>
+        <span class="reps">12–15 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">TRX Pike</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Pies en TRX, piernas estiradas, levantas la cadera al techo formando una V invertida. Versión avanzada del knee tuck.</p>
+        <span class="reps">8–12 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">3</div>
+      <div class="body">
+        <p class="name">Lying Leg Raises (PDF) con KB entre pies</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">Acostado, sujetas el KB entre los pies, subes piernas estiradas. Agrega resistencia sin necesitar barra.</p>
+        <span class="reps">10–12 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Toes-to-Bar (Fase 3)</div>
+      <div class="why">Requiere barra</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX Knee-to-Elbow</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">En posición de plancha con pies en TRX, llevas una rodilla al codo opuesto (cruzado). Trabaja oblicuos como el toes-to-bar.</p>
+        <span class="reps">10/lado</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">V-Up con KB</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">V-up sosteniendo KB con ambas manos. Pasas el KB de manos a pies en el punto alto de cada rep.</p>
+        <span class="reps">10–12 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- BACK -->
+<section class="muscle">
+<h2>🔙 Espalda</h2>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Pull-Ups (todas las fases)</div>
+      <div class="why">No tienes barra</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX Inverted Row</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Cuerpo más horizontal = más difícil (más peso). Pies juntos y elevados sobre silla para máximo desafío. Es el reemplazo directo más cercano.</p>
+        <span class="reps">10–15 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">Band Pulldown anclado arriba</p>
+        <p class="equip"><span class="pill">Banda</span></p>
+        <p class="desc">Anclas la banda en un punto alto (gancho, marco superior de puerta). Tiras hacia abajo de rodillas o de pie, simulando jalón al pecho.</p>
+        <span class="reps">12–15 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">3</div>
+      <div class="body">
+        <p class="name">TRX Y-Fly</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Brazos arriba en forma de Y, tiras del cuerpo hacia arriba. Trabaja parte alta del dorsal y romboides como un pull-up con agarre ancho.</p>
+        <span class="reps">10 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Weighted Pull-Ups (Fase 3)</div>
+      <div class="why">No tienes barra ni chaleco</div>
+    </div>
+    <span class="badge">Reemplazar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">TRX Inverted Row con pies elevados + tempo lento</p>
+        <p class="equip"><span class="pill">TRX</span> <span class="pill">Silla</span></p>
+        <p class="desc">Pies en silla, cuerpo casi paralelo al piso. Sube en 1 seg, pausa 2 seg arriba, bajada de 3 seg. Equivalente a pull-up con peso.</p>
+        <span class="reps">6–10 reps</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">TRX Inverted Row con mochila cargada</p>
+        <p class="equip"><span class="pill">TRX</span> <span class="pill">Mochila</span></p>
+        <p class="desc">Misma row pero con mochila al pecho. Es tu "chaleco de peso" funcional.</p>
+        <span class="reps">8 reps</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swap-card">
+  <div class="swap-head">
+    <div>
+      <div class="orig">Renegade Rows / Gorilla Rows (Fase 3)</div>
+      <div class="why">Renegade típico usa 2 KB, tú tienes 1</div>
+    </div>
+    <span class="badge">Adaptar</span>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="name">Single-KB Plank Row</p>
+        <p class="equip"><span class="pill">KB 8kg</span></p>
+        <p class="desc">Plancha alta, KB junto a un brazo, lo levantas en remo y lo bajas. La mano libre apoya. Cambias de lado cada set. El lado sin KB exige más anti-rotación.</p>
+        <span class="reps">8/brazo</span>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="name">TRX Single-Arm Row</p>
+        <p class="equip"><span class="pill">TRX</span></p>
+        <p class="desc">Remo TRX con una sola mano (la otra cruzada al pecho). Carga unilateral que trabaja anti-rotación. No necesitas KB.</p>
+        <span class="reps">10/lado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- COACH TIPS -->
+<div class="tips">
+<h2>🎓 Trucos del coach para 8 kg + cero barra</h2>
+<div class="tip-grid">
+
+  <div class="tip">
+    <h3>Tempo control</h3>
+    <p>Una rep de 4 seg bajada + 1 seg pausa + 2 seg subida es 7× más larga bajo tensión que una rep rápida. Convierte tu 8 kg en estímulo de 14–16 kg sin agregar peso.</p>
+  </div>
+
+  <div class="tip">
+    <h3>Single-arm loading</h3>
+    <p>Cargar un solo lado activa tu core para evitar la rotación. Press de hombro, remo, suitcase squat, single-leg RDL: todos sienten un 8 kg como si fuera 12.</p>
+  </div>
+
+  <div class="tip">
+    <h3>Ángulo del TRX</h3>
+    <p>Más vertical = más fácil. Más horizontal (cuerpo paralelo al suelo) = más duro. Pies elevados sobre silla en TRX row = nivel "weighted pull-up".</p>
+  </div>
+
+  <div class="tip">
+    <h3>Pre-fatiga</h3>
+    <p>Haz un movimiento aislante antes del compuesto. Ej: 15 band curls → luego TRX row. El bíceps llega cansado y los pocos kilos efectivos pesan mucho más.</p>
+  </div>
+
+  <div class="tip">
+    <h3>Pausa isométrica</h3>
+    <p>Pausa 3–5 seg en la posición más débil (abajo de la flexión, arriba de la dominada). Multiplica el reclutamiento muscular sin tocar el peso.</p>
+  </div>
+
+  <div class="tip">
+    <h3>Combos con mochila</h3>
+    <p>Mochila + KB. Ej: TRX Row con mochila cargada al pecho. KB Goblet Squat con mochila en la espalda. Suma cargas para piernas y empujes pesados.</p>
+  </div>
+
+  <div class="tip">
+    <h3>Density training</h3>
+    <p>Reduce descanso a 10–15 seg entre ejercicios. Tu corazón hace el trabajo que el peso no hace. Misma sesión, doble efecto cardiovascular y muscular.</p>
+  </div>
+
+  <div class="tip">
+    <h3>Unilateral imbalance</h3>
+    <p>Si haces farmer carry con KB en un solo lado por 30 seg, tu cuerpo se "desbalancea" y tu oblicuo opuesto trabaja como sostén. Camina 30 m por lado.</p>
+  </div>
+
+</div>
+</div>
+
+</main>
+
+</body>
+</html>

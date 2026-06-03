@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi Fitness</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    background:linear-gradient(135deg,#2d3a82,#1f2960);
+    color:white;margin:0;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .wrap{max-width:700px;width:100%;text-align:center}
+  h1{font-size:2.5rem;margin:0 0 8px;letter-spacing:-1px}
+  .sub{opacity:.8;margin:0 0 32px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  a.card{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+    border-radius:14px;padding:24px;text-decoration:none;color:white;
+    transition:transform .2s,background .2s;display:block;
+  }
+  a.card:hover{background:rgba(255,255,255,.15);transform:translateY(-3px)}
+  .icon{font-size:2.5rem;margin-bottom:10px}
+  .card h2{margin:8px 0 6px;font-size:1.15rem}
+  .card p{margin:0;font-size:.85rem;opacity:.8}
+  .footer{margin-top:32px;font-size:.8rem;opacity:.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>💪 Fitness</h1>
+  <p class="sub">Proyecto personal · método DailyRepsGuy · 🔥 alta intensidad</p>
+  <div class="cards">
+    <a class="card" href="semana-intermedio.html">
+      <div class="icon">📅</div>
+      <h2>Mi semana (Intermedio HIIT)</h2>
+      <p>7 días de circuitos explosivos y combos en 20 min</p>
+    </a>
+    <a class="card" href="registro.html">
+      <div class="icon">📒</div>
+      <h2>Registro</h2>
+      <p>Lo que realmente entrené, sesión por sesión</p>
+    </a>
+    <a class="card" href="ejercicios-catalogo.html">
+      <div class="icon">📚</div>
+      <h2>Catálogo de ejercicios</h2>
+      <p>Todos los movimientos por grupo y fase</p>
+    </a>
+    <a class="card" href="sustitutos-coach.html">
+      <div class="icon">🏋️</div>
+      <h2>Sustitutos del coach</h2>
+      <p>Reemplazos creativos con TRX, bandas y KB 8kg</p>
+    </a>
+  </div>
+  <p class="footer">~/fitness/</p>
+</div>
+</body>
+</html>

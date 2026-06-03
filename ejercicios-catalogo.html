@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>DailyRepsGuy — Catálogo de Ejercicios</title>
+<style>
+  :root{
+    --navy:#2d3a82;
+    --navy-dark:#1f2960;
+    --bg:#f5f6fa;
+    --card:#ffffff;
+    --text:#1a1d2e;
+    --muted:#6b7088;
+    --p1:#4caf50;
+    --p2:#ff9800;
+    --p3:#e53935;
+    --p4:#7b1fa2;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    margin:0;
+    padding:0;
+    line-height:1.5;
+  }
+  header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:white;
+    padding:32px 24px;
+    text-align:center;
+  }
+  header h1{margin:0;font-size:2.2rem;letter-spacing:-.5px}
+  header p{margin:8px 0 0;opacity:.85}
+  nav{
+    position:sticky;top:0;background:white;
+    border-bottom:1px solid #e4e6ef;
+    padding:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+    z-index:10;
+  }
+  nav a{
+    text-decoration:none;color:var(--navy);font-weight:600;
+    padding:8px 16px;border-radius:8px;
+    background:#eef0f7;font-size:.9rem;
+  }
+  nav a:hover{background:var(--navy);color:white}
+  .filter-bar{
+    display:flex;gap:6px;justify-content:center;padding:16px;flex-wrap:wrap;
+    background:#fff;border-bottom:1px solid #e4e6ef;
+  }
+  .filter-btn{
+    border:none;padding:8px 14px;border-radius:20px;cursor:pointer;
+    font-weight:600;font-size:.85rem;background:#eef0f7;color:var(--text);
+  }
+  .filter-btn.active{background:var(--navy);color:white}
+  main{max-width:1200px;margin:0 auto;padding:24px}
+  section{margin-bottom:48px}
+  h2{
+    font-size:1.8rem;margin:0 0 20px;color:var(--navy);
+    border-bottom:3px solid var(--navy);padding-bottom:8px;
+  }
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:var(--card);border-radius:12px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+  .icon-box{
+    height:140px;background:#f0f2f8;display:flex;
+    align-items:center;justify-content:center;
+    border-bottom:1px solid #e4e6ef;
+  }
+  .icon-box svg{width:90px;height:90px}
+  .card-body{padding:14px 16px;flex:1;display:flex;flex-direction:column}
+  .phase-badge{
+    display:inline-block;font-size:.7rem;font-weight:700;
+    padding:3px 8px;border-radius:4px;color:white;
+    text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;
+    align-self:flex-start;
+  }
+  .p1{background:var(--p1)} .p2{background:var(--p2)}
+  .p3{background:var(--p3)} .p4{background:var(--p4)}
+  .card h3{margin:0 0 4px;font-size:1.05rem}
+  .en{color:var(--muted);font-size:.8rem;margin:0 0 8px;font-style:italic}
+  .desc{font-size:.85rem;color:#444;margin:0 0 12px;flex:1}
+  .video-link{
+    display:inline-flex;align-items:center;gap:6px;
+    text-decoration:none;color:var(--navy);font-size:.8rem;
+    font-weight:600;padding:6px 10px;background:#eef0f7;
+    border-radius:6px;align-self:flex-start;
+  }
+  .video-link:hover{background:var(--navy);color:white}
+  .hidden{display:none !important}
+  .legend{
+    display:flex;gap:12px;justify-content:center;font-size:.8rem;
+    margin:8px 0;flex-wrap:wrap;color:var(--muted);
+  }
+  .legend span{display:flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DailyRepsGuy — Catálogo Visual</h1>
+  <p>Todos los ejercicios del PDF, organizados por grupo muscular y fase</p>
+</header>
+
+<nav>
+  <a href="#armschest">Brazos/Pecho</a>
+  <a href="#legs">Piernas</a>
+  <a href="#abs">Abdomen</a>
+  <a href="#back">Espalda</a>
+</nav>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">Todas las fases</button>
+  <button class="filter-btn" data-filter="p1">Fase 1 — Beginner</button>
+  <button class="filter-btn" data-filter="p2">Fase 2 — Intermediate</button>
+  <button class="filter-btn" data-filter="p3">Fase 3 — Advanced</button>
+  <button class="filter-btn" data-filter="p4">Fase 4 — Pro</button>
+</div>
+
+<div class="legend">
+  <span><span class="dot" style="background:var(--p1)"></span>Principiante</span>
+  <span><span class="dot" style="background:var(--p2)"></span>Intermedio</span>
+  <span><span class="dot" style="background:var(--p3)"></span>Avanzado</span>
+  <span><span class="dot" style="background:var(--p4)"></span>Pro</span>
+</div>
+
+<main>
+
+<!-- ==================== ARMS / CHEST ==================== -->
+<section id="armschest">
+  <h2>💪 Brazos y Pecho</h2>
+  <div class="grid">
+
+    <!-- PHASE 1 -->
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="35" r="8" fill="#2d3a82"/><line x1="30" y1="43" x2="30" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="65" x2="20" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="65" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="50" x2="55" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="0" y1="85" x2="100" y2="85" stroke="#888" stroke-width="2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Flexiones de rodillas</h3>
+        <p class="en">Kneeling Push-Ups</p>
+        <p class="desc">Flexión apoyando rodillas en el suelo. Reduce la carga para construir forma.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kneeling+push+ups+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="20" y="55" width="60" height="30" fill="#a0a8c0"/><circle cx="50" cy="35" r="8" fill="#2d3a82"/><line x1="50" y1="43" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="30" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="55" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Fondos en silla</h3>
+        <p class="en">Chair Dips</p>
+        <p class="desc">Manos en silla firme, bajas y subes el cuerpo. Pies más cerca = más fácil.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=chair+dips+tutorial">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="25" r="8" fill="#2d3a82"/><line x1="50" y1="33" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="35" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="65" y2="55" stroke="#2d3a82" stroke-width="4"/><rect x="28" y="55" width="14" height="10" fill="#7b1fa2"/><rect x="58" y="55" width="14" height="10" fill="#7b1fa2"/><line x1="50" y1="65" x2="40" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="60" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Curl de bíceps con mochila</h3>
+        <p class="en">Bicep Curls (Backpack)</p>
+        <p class="desc">Llena una mochila con libros y úsala como mancuerna improvisada.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=backpack+bicep+curls">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="0" y="70" width="50" height="15" fill="#a0a8c0"/><circle cx="70" cy="40" r="8" fill="#2d3a82"/><line x1="70" y1="48" x2="40" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="50" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="50" x2="60" y2="65" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Flexiones inclinadas</h3>
+        <p class="en">Incline Push-Ups</p>
+        <p class="desc">Manos sobre mesón, sofá o silla. Ángulo más alto = más fácil.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=incline+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="45" r="7" fill="#2d3a82"/><line x1="20" y1="52" x2="75" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="50" x2="20" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="75" y1="65" x2="85" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="0" y1="85" x2="100" y2="85" stroke="#888" stroke-width="2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Flexiones estándar</h3>
+        <p class="en">Standard Push-Ups</p>
+        <p class="desc">La flexión clásica: cuerpo recto, manos a la altura de los hombros.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=standard+push+up+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="45" r="7" fill="#2d3a82"/><line x1="20" y1="52" x2="75" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="35" y1="56" x2="40" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="58" x2="42" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="75" y1="65" x2="85" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Flexiones con agarre cerrado</h3>
+        <p class="en">Close-Grip Push-Ups</p>
+        <p class="desc">Manos juntas bajo el pecho. Enfocado en tríceps.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=close+grip+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="75" x2="90" y2="75" stroke="#2d3a82" stroke-width="4"/><circle cx="20" cy="68" r="6" fill="#2d3a82"/><circle cx="50" cy="55" r="10" fill="#7b1fa2"/><line x1="40" y1="55" x2="40" y2="45" stroke="#7b1fa2" stroke-width="3"/><line x1="60" y1="55" x2="60" y2="45" stroke="#7b1fa2" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Press de pecho con kettlebell</h3>
+        <p class="en">Kettlebell Floor Press</p>
+        <p class="desc">Acostado boca arriba, empujas la kettlebell hacia arriba. Uno o dos brazos.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+floor+press">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="60" y="55" width="35" height="15" fill="#a0a8c0"/><circle cx="20" cy="55" r="7" fill="#2d3a82"/><line x1="20" y1="62" x2="75" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="60" x2="15" y2="75" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Flexiones declinadas</h3>
+        <p class="en">Decline Push-Ups</p>
+        <p class="desc">Pies sobre una silla, manos en el piso. Más exigente para hombros y pecho superior.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=decline+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="10" y="55" width="25" height="30" fill="#a0a8c0"/><rect x="65" y="60" width="25" height="25" fill="#a0a8c0"/><circle cx="50" cy="35" r="7" fill="#2d3a82"/><line x1="50" y1="42" x2="50" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="48" x2="25" y2="58" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="60" x2="75" y2="65" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Fondos con pies elevados</h3>
+        <p class="en">Feet-Elevated Dips</p>
+        <p class="desc">Silla detrás (manos) y otra silla adelante (pies). Más peso sobre los brazos.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=feet+elevated+dips">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="50" r="7" fill="#2d3a82"/><polygon points="42,62 48,55 54,62" fill="none" stroke="#e53935" stroke-width="3"/><line x1="20" y1="57" x2="48" y2="62" stroke="#2d3a82" stroke-width="4"/><line x1="48" y1="62" x2="80" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="80" y1="70" x2="90" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Flexiones diamante</h3>
+        <p class="en">Diamond Push-Ups</p>
+        <p class="desc">Manos formando un diamante con índices y pulgares. Tríceps + pecho interior.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=diamond+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="30" r="7" fill="#2d3a82"/><line x1="50" y1="37" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="25" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="75" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="38" x2="35" y2="20" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="38" x2="65" y2="20" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Flexiones pike</h3>
+        <p class="en">Pike Push-Ups</p>
+        <p class="desc">Cuerpo en "V" invertida, cabeza hacia el piso. Trabaja hombros como press.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=pike+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="8" fill="#2d3a82"/><line x1="50" y1="53" x2="50" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="30" y2="20" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="20" stroke="#2d3a82" stroke-width="4"/><circle cx="30" cy="15" r="6" fill="#7b1fa2"/><circle cx="70" cy="15" r="6" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Press de hombros con kettlebell</h3>
+        <p class="en">Kettlebell Shoulder Press</p>
+        <p class="desc">De pie, empuja la kettlebell por encima de la cabeza.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+shoulder+press">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="20" x2="90" y2="20" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="20" x2="40" y2="35" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="20" x2="60" y2="35" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="45" r="8" fill="#2d3a82"/><line x1="50" y1="53" x2="50" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="75" x2="40" y2="90" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="75" x2="60" y2="90" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Dominadas supinas (chin-ups)</h3>
+        <p class="en">Chin-Ups</p>
+        <p class="desc">Agarre con palmas hacia ti. Enfocadas en bíceps y dorsal.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=chin+ups+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="30" r="7" fill="#2d3a82"/><line x1="20" y1="55" x2="80" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="37" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><path d="M 30 50 Q 35 45 40 50" stroke="#e53935" stroke-width="2" fill="none"/><path d="M 60 50 Q 65 45 70 50" stroke="#e53935" stroke-width="2" fill="none"/><line x1="50" y1="55" x2="40" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="60" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Flexiones explosivas / con palmada</h3>
+        <p class="en">Explosive / Clap Push-Ups</p>
+        <p class="desc">Empuja con fuerza para despegar las manos del piso. Versión avanzada: aplaude.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=clap+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="7" fill="#2d3a82"/><line x1="15" y1="65" x2="85" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="57" x2="15" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="57" x2="85" y2="55" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Flexiones arquero</h3>
+        <p class="en">Archer Push-Ups</p>
+        <p class="desc">Cargas todo el peso en un brazo, el otro queda extendido. Transición a una sola mano.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=archer+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="25" cy="45" r="6" fill="#2d3a82"/><line x1="25" y1="51" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="25" y1="51" x2="25" y2="75" stroke="#2d3a82" stroke-width="4"/><circle cx="55" cy="40" r="7" fill="#7b1fa2"/><line x1="55" y1="47" x2="55" y2="58" stroke="#7b1fa2" stroke-width="3"/><line x1="80" y1="60" x2="90" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Flexión + remo con kettlebell</h3>
+        <p class="en">Kettlebell Push-Up Rows</p>
+        <p class="desc">Flexión apoyado en kettlebells, luego remo alterno con cada brazo.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=renegade+row+push+up">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="15" y1="20" x2="15" y2="80" stroke="#7b1fa2" stroke-width="4"/><line x1="85" y1="20" x2="85" y2="80" stroke="#7b1fa2" stroke-width="4"/><line x1="15" y1="35" x2="85" y2="35" stroke="#7b1fa2" stroke-width="3"/><circle cx="50" cy="50" r="8" fill="#2d3a82"/><line x1="50" y1="58" x2="50" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="25" y2="35" stroke="#2d3a82" stroke-width="3"/><line x1="50" y1="50" x2="75" y2="35" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Fondos en paralelas</h3>
+        <p class="en">Bodyweight Dips (parallel bars)</p>
+        <p class="desc">Suspendido entre barras paralelas, bajas y subes con tríceps y pecho.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=parallel+bar+dips">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="20" y="60" width="20" height="6" fill="#7b1fa2"/><rect x="60" y="60" width="20" height="6" fill="#7b1fa2"/><circle cx="20" cy="40" r="6" fill="#2d3a82"/><line x1="20" y1="46" x2="75" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="48" x2="30" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="55" x2="70" y2="60" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Flexiones con déficit</h3>
+        <p class="en">Deficit Push-Ups</p>
+        <p class="desc">Manos elevadas sobre libros/bloques para aumentar el rango de movimiento.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=deficit+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="55" r="7" fill="#2d3a82"/><line x1="50" y1="62" x2="50" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="62" x2="30" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="62" x2="70" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="50" y2="20" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="15" r="9" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Kettlebell clean & press</h3>
+        <p class="en">Kettlebell Clean to Press</p>
+        <p class="desc">Levantas la kettlebell del piso al hombro, luego presionas sobre la cabeza.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+clean+and+press">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="80" r="7" fill="#2d3a82"/><line x1="50" y1="73" x2="50" y2="40" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="30" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="70" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="55" x2="35" y2="60" stroke="#2d3a82" stroke-width="3"/><line x1="70" y1="55" x2="65" y2="60" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Flexiones en parada de manos</h3>
+        <p class="en">Handstand Push-Ups</p>
+        <p class="desc">Cabeza abajo apoyado en pared, bajas y subes solo con brazos.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=handstand+push+ups+wall">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="60" r="6" fill="#2d3a82"/><line x1="20" y1="66" x2="80" y2="72" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="65" x2="22" y2="80" stroke="#2d3a82" stroke-width="4"/><text x="50" y="40" text-anchor="middle" font-size="10" fill="#e53935" font-weight="bold">5–30 s</text></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Flexiones con tensión</h3>
+        <p class="en">Tension Push-Ups</p>
+        <p class="desc">Pausa de 5–30 seg abajo, o baja lento (4–8 seg) y sube rápido.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=slow+tempo+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="card" data-phase="p4">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="9" fill="#2d3a82"/><rect x="35" y="45" width="30" height="25" fill="#7b1fa2"/><text x="50" y="62" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+KG</text><line x1="50" y1="70" x2="40" y2="90" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="70" x2="60" y2="90" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p4">Fase 4</span>
+        <h3>Variaciones con peso añadido</h3>
+        <p class="en">Add Weight to Phase 3</p>
+        <p class="desc">Chaleco de peso o más kilos en la kettlebell sobre cualquier movimiento de Fase 3.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+vest+push+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== LEGS ==================== -->
+<section id="legs">
+  <h2>🦵 Piernas</h2>
+  <div class="grid">
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="35" y2="55" stroke="#2d3a82" stroke-width="3"/><line x1="50" y1="40" x2="65" y2="55" stroke="#2d3a82" stroke-width="3"/><line x1="50" y1="55" x2="30" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="75" x2="30" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="75" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Sentadillas con peso corporal</h3>
+        <p class="en">Bodyweight Squats</p>
+        <p class="desc">El movimiento fundamental: bajas como si te sentaras, manteniendo espalda recta.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=bodyweight+squat+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="50" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="30" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="65" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="65" y1="60" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Zancadas hacia atrás</h3>
+        <p class="en">Reverse Lunges</p>
+        <p class="desc">Das un paso atrás y bajas la rodilla casi al piso. Menos impacto que el lunge frontal.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=reverse+lunges">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="70" r="6" fill="#2d3a82"/><line x1="20" y1="76" x2="20" y2="80" stroke="#2d3a82" stroke-width="3"/><line x1="20" y1="70" x2="50" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="80" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="80" y1="50" x2="80" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Puente de glúteos</h3>
+        <p class="en">Glute Bridges</p>
+        <p class="desc">Acostado de espaldas, levantas la cadera apretando los glúteos.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=glute+bridge+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="55" y="60" width="40" height="25" fill="#a0a8c0"/><circle cx="30" cy="25" r="7" fill="#2d3a82"/><line x1="30" y1="32" x2="30" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="60" x2="55" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="60" x2="35" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Subidas al cajón</h3>
+        <p class="en">Step-Ups</p>
+        <p class="desc">Subes a una silla o escalón alternando piernas.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=step+ups+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="40" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="60" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="80" x2="40" y2="73" stroke="#e53935" stroke-width="4"/><line x1="60" y1="80" x2="60" y2="73" stroke="#e53935" stroke-width="4"/><line x1="20" y1="85" x2="80" y2="85" stroke="#888" stroke-width="2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Elevación de talones</h3>
+        <p class="en">Calf Raises</p>
+        <p class="desc">De pie, te elevas sobre las puntas para trabajar pantorrillas.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=calf+raises">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="40" r="8" fill="#7b1fa2"/><line x1="50" y1="55" x2="30" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Goblet squat</h3>
+        <p class="en">Goblet Squat (Kettlebell)</p>
+        <p class="desc">Sentadilla sosteniendo una kettlebell contra el pecho.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=goblet+squat">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="20" r="7" fill="#2d3a82"/><line x1="30" y1="27" x2="30" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="50" x2="20" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="50" x2="55" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="60" x2="65" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="40" x2="80" y2="40" stroke="#e53935" stroke-width="3"/><line x1="73" y1="35" x2="77" y2="45" stroke="#e53935" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Zancadas caminando</h3>
+        <p class="en">Walking Lunges</p>
+        <p class="desc">Avanzas dando zancadas, alternando piernas. Peso opcional.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=walking+lunges">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="65" r="6" fill="#2d3a82"/><line x1="20" y1="65" x2="50" y2="45" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="45" x2="70" y2="45" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="45" x2="70" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="45" x2="30" y2="30" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Puente de glúteo a una pierna</h3>
+        <p class="en">Single-Leg Glute Bridge</p>
+        <p class="desc">Mismo puente pero con una pierna extendida. Doble la intensidad por lado.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=single+leg+glute+bridge">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="60" y="55" width="35" height="25" fill="#a0a8c0"/><circle cx="30" cy="20" r="7" fill="#2d3a82"/><line x1="30" y1="27" x2="30" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="55" x2="25" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="55" x2="70" y2="55" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Bulgarian split squat</h3>
+        <p class="en">Bulgarian Split Squats</p>
+        <p class="desc">Pie trasero elevado en una silla, sentadilla profunda con la pierna delantera.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=bulgarian+split+squat">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="15" r="7" fill="#2d3a82"/><line x1="50" y1="22" x2="50" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="35" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="65" y2="70" stroke="#2d3a82" stroke-width="4"/><path d="M 30 85 Q 50 95 70 85" stroke="#e53935" stroke-width="2" fill="none"/><line x1="50" y1="30" x2="30" y2="20" stroke="#2d3a82" stroke-width="3"/><line x1="50" y1="30" x2="70" y2="20" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Sentadillas con salto</h3>
+        <p class="en">Jump Squats</p>
+        <p class="desc">Sentadilla seguida de salto explosivo. Aterrizas suave y repites.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=jump+squats">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="15" r="7" fill="#2d3a82"/><line x1="50" y1="22" x2="50" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="30" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="70" y2="75" stroke="#2d3a82" stroke-width="4"/><path d="M 20 85 Q 50 90 80 85" stroke="#e53935" stroke-width="2" fill="none" stroke-dasharray="3,3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Zancadas con salto</h3>
+        <p class="en">Jump Lunges</p>
+        <p class="desc">Alternas piernas en el aire entre cada lunge. Explosivo.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=jump+lunges">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="30" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="35" x2="75" y2="55" stroke="#2d3a82" stroke-width="4"/><circle cx="80" cy="58" r="8" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Kettlebell swings</h3>
+        <p class="en">Kettlebell Swings</p>
+        <p class="desc">Balanceas la kettlebell desde entre las piernas hasta la altura del pecho usando cadera.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+swing+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="25" r="7" fill="#2d3a82"/><line x1="50" y1="32" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="45" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="80" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="80" y1="55" x2="85" y2="50" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Pistol squat</h3>
+        <p class="en">Pistol Squat Progressions</p>
+        <p class="desc">Sentadilla a una sola pierna. Progresión: caja → asistida → completa.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=pistol+squat+progression">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="20" r="7" fill="#2d3a82"/><line x1="30" y1="27" x2="35" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="35" y1="55" x2="25" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="35" y1="55" x2="45" y2="80" stroke="#2d3a82" stroke-width="4"/><rect x="45" y="45" width="20" height="6" fill="#7b1fa2"/><rect x="70" y="45" width="20" height="6" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Step-ups con peso</h3>
+        <p class="en">Weighted Step-Ups</p>
+        <p class="desc">Subes al escalón cargando kettlebell o mochila.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+step+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="55" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="50" x2="45" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="50" x2="65" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="50" x2="80" y2="65" stroke="#2d3a82" stroke-width="4"/><circle cx="83" cy="68" r="7" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Peso muerto rumano</h3>
+        <p class="en">Romanian Dead Lifts (RDL)</p>
+        <p class="desc">Bisagra de cadera con kettlebell o peso, espalda recta, isquios estirados.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=romanian+deadlift+kettlebell">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="20" r="7" fill="#2d3a82"/><line x1="30" y1="27" x2="30" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="50" x2="20" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="50" x2="55" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="60" x2="65" y2="80" stroke="#2d3a82" stroke-width="4"/><circle cx="40" cy="65" r="8" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Lunge estático + paso de kettlebell</h3>
+        <p class="en">Static Lunges with KB Pass</p>
+        <p class="desc">En posición de lunge, pasas la kettlebell por debajo de la pierna delantera.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=lunge+kettlebell+pass+through">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="65" r="6" fill="#2d3a82"/><line x1="20" y1="65" x2="50" y2="45" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="45" x2="70" y2="45" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="45" x2="70" y2="80" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="45" r="8" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Puente de glúteos con peso</h3>
+        <p class="en">Weighted Glute Bridges</p>
+        <p class="desc">Igual que el puente, pero con kettlebell sobre las caderas.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+glute+bridge">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="7" fill="#2d3a82"/><line x1="50" y1="52" x2="50" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="70" x2="30" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="70" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="45" x2="50" y2="15" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="10" r="9" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Sentadilla con kettlebell sobre la cabeza</h3>
+        <p class="en">Kettlebell Overhead Squats</p>
+        <p class="desc">Sentadilla manteniendo la kettlebell extendida sobre la cabeza.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+overhead+squat">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="55" y="55" width="40" height="25" fill="#a0a8c0"/><circle cx="30" cy="20" r="7" fill="#2d3a82"/><line x1="30" y1="27" x2="30" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="55" x2="25" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="30" y1="55" x2="70" y2="55" stroke="#2d3a82" stroke-width="4"/><circle cx="30" cy="45" r="7" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Bulgarian split squat con peso</h3>
+        <p class="en">Weighted Bulgarian Split Squat</p>
+        <p class="desc">Mismo movimiento pero cargando kettlebell o peso.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+bulgarian+split+squat">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p4">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><rect x="35" y="30" width="30" height="25" fill="#7b1fa2"/><text x="50" y="47" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+KG</text><line x1="50" y1="55" x2="30" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p4">Fase 4</span>
+        <h3>Variaciones de piernas con peso</h3>
+        <p class="en">Add Weight to Phase 3</p>
+        <p class="desc">Chaleco de peso o kettlebells más pesadas en cualquier movimiento de Fase 3.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+vest+leg+workout">▶ Ver demo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== ABS ==================== -->
+<section id="abs">
+  <h2>🔥 Abdomen</h2>
+  <div class="grid">
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="70" r="6" fill="#2d3a82"/><line x1="20" y1="70" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="55" y2="40" stroke="#2d3a82" stroke-width="3"/><line x1="50" y1="65" x2="55" y2="60" stroke="#2d3a82" stroke-width="3"/><line x1="50" y1="65" x2="80" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="80" y1="55" x2="85" y2="35" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Dead bugs</h3>
+        <p class="en">Dead Bugs</p>
+        <p class="desc">Boca arriba, mueves brazo y pierna opuestos manteniendo la espalda pegada al piso.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=dead+bug+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="35" cy="55" r="6" fill="#2d3a82"/><line x1="35" y1="61" x2="55" y2="78" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="78" x2="80" y2="78" stroke="#2d3a82" stroke-width="4"/><line x1="35" y1="55" x2="30" y2="48" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Crunches (abdominales)</h3>
+        <p class="en">Crunches</p>
+        <p class="desc">Acostado, despegas hombros del piso sin levantar la zona lumbar.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=crunches+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="75" r="6" fill="#2d3a82"/><line x1="20" y1="75" x2="55" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="75" x2="80" y2="35" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Elevación de piernas en piso</h3>
+        <p class="en">Leg Raises (on floor)</p>
+        <p class="desc">Acostado boca arriba, subes ambas piernas estiradas hasta vertical.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=lying+leg+raises">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="50" r="6" fill="#2d3a82"/><line x1="20" y1="56" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="55" x2="20" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="80" y1="60" x2="85" y2="80" stroke="#2d3a82" stroke-width="4"/><text x="50" y="35" text-anchor="middle" font-size="10" fill="#e53935" font-weight="bold">20–30 s</text></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Plancha</h3>
+        <p class="en">Plank (20–30 sec)</p>
+        <p class="desc">Cuerpo recto apoyado en antebrazos y puntas de pies. Mantén el core firme.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=plank+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="55" r="6" fill="#2d3a82"/><line x1="20" y1="61" x2="20" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="65" x2="35" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="75" x2="40" y2="85" stroke="#2d3a82" stroke-width="3"/><line x1="20" y1="75" x2="40" y2="75" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Penguins (pingüinos)</h3>
+        <p class="en">Penguins</p>
+        <p class="desc">Acostado con hombros despegados, tocas tobillos alternando lado a lado.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=penguin+crunches+abs">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="50" cy="40" r="6" fill="#2d3a82"/><line x1="50" y1="46" x2="20" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="46" x2="80" y2="75" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>V-Ups</h3>
+        <p class="en">V-Ups</p>
+        <p class="desc">Subes piernas y torso al mismo tiempo formando una "V" tocando los pies.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=v+ups+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="15" x2="90" y2="15" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="15" x2="40" y2="30" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="15" x2="60" y2="30" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="38" r="7" fill="#2d3a82"/><line x1="50" y1="45" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="30" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="70" y2="60" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Elevación de rodillas colgado</h3>
+        <p class="en">Hanging Knee Raises</p>
+        <p class="desc">Colgando de barra, llevas rodillas al pecho. Si no hay barra: tuck-ups en el piso.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=hanging+knee+raises">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="20" cy="40" r="6" fill="#2d3a82"/><line x1="20" y1="46" x2="80" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="46" x2="20" y2="75" stroke="#2d3a82" stroke-width="4"/><text x="50" y="20" text-anchor="middle" font-size="10" fill="#e53935" font-weight="bold">30–40 s</text></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Plancha lateral</h3>
+        <p class="en">Side Planks (30–40 sec)</p>
+        <p class="desc">De costado, apoyado en un antebrazo. Trabaja oblicuos.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=side+plank">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="6" fill="#2d3a82"/><line x1="50" y1="41" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="25" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="75" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="50" x2="80" y2="40" stroke="#2d3a82" stroke-width="3"/><circle cx="83" cy="38" r="6" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Giro ruso</h3>
+        <p class="en">Russian Twists</p>
+        <p class="desc">Sentado con torso inclinado, rotas a ambos lados. Kettlebell opcional.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=russian+twists">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><line x1="50" y1="27" x2="50" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="60" x2="40" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="60" x2="65" y2="75" stroke="#2d3a82" stroke-width="4"/><circle cx="35" cy="40" r="7" fill="#7b1fa2"/><line x1="35" y1="33" x2="50" y2="33" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Marcha con kettlebell</h3>
+        <p class="en">Kettlebell Marches</p>
+        <p class="desc">De pie sosteniendo kettlebell, marchas alternando rodillas al pecho.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+march">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="50" r="6" fill="#2d3a82"/><line x1="20" y1="56" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="55" x2="20" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="58" x2="45" y2="40" stroke="#e53935" stroke-width="3"/><line x1="80" y1="60" x2="85" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Toques de hombro en plancha</h3>
+        <p class="en">Plank Shoulder Taps</p>
+        <p class="desc">En plancha alta, tocas hombro opuesto alternando sin balancear caderas.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=plank+shoulder+taps">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="25" cy="40" r="6" fill="#2d3a82"/><line x1="25" y1="46" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="25" y1="46" x2="25" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="60" y1="55" x2="50" y2="75" stroke="#e53935" stroke-width="3"/><line x1="80" y1="60" x2="80" y2="75" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Mountain climbers</h3>
+        <p class="en">Mountain Climbers</p>
+        <p class="desc">En plancha, llevas rodillas al pecho alternando rápido como si corrieras.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=mountain+climbers+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="15" x2="90" y2="15" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="15" x2="40" y2="30" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="15" x2="60" y2="30" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="38" r="7" fill="#2d3a82"/><line x1="50" y1="45" x2="50" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="60" x2="25" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="60" x2="75" y2="55" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Elevación de piernas colgado</h3>
+        <p class="en">Hanging Leg Raises (full)</p>
+        <p class="desc">Colgado de barra, subes piernas estiradas hasta horizontal o más.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=hanging+leg+raises">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="15" x2="90" y2="15" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="15" x2="40" y2="30" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="15" x2="60" y2="30" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="38" r="7" fill="#2d3a82"/><line x1="50" y1="45" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="40" y2="20" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="60" y2="20" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Toes to bar</h3>
+        <p class="en">Toe-to-Bar Progressions</p>
+        <p class="desc">Progresión: rodilla → L-raise → tocar la barra con la punta de los pies.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=toes+to+bar+progression">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="25" cy="50" r="6" fill="#2d3a82"/><line x1="25" y1="56" x2="70" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="25" y1="56" x2="25" y2="80" stroke="#2d3a82" stroke-width="4"/><line x1="70" y1="65" x2="75" y2="80" stroke="#2d3a82" stroke-width="4"/><path d="M 30 75 Q 50 78 65 75" stroke="#e53935" stroke-width="2" fill="none" stroke-dasharray="3,3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Plank walk-outs</h3>
+        <p class="en">Plank Walk-Outs</p>
+        <p class="desc">Desde de pie, caminas con manos hacia plancha y vuelves.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=plank+walk+outs">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="50" cy="30" r="7" fill="#2d3a82"/><line x1="50" y1="37" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="35" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="65" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="30" x2="50" y2="15" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="10" r="7" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Sit-up + press con kettlebell</h3>
+        <p class="en">KB Sit-Up to Press</p>
+        <p class="desc">Subes desde abdominal y presionas la kettlebell hacia el techo.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+sit+up+press">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="65" r="7" fill="#2d3a82"/><line x1="50" y1="60" x2="50" y2="20" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="12" r="8" fill="#7b1fa2"/><line x1="50" y1="68" x2="50" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="55" x2="55" y2="55" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Marcha con kettlebell sobre la cabeza</h3>
+        <p class="en">Kettlebell Overhead Marches</p>
+        <p class="desc">Marcha en su lugar con kettlebell extendida sobre la cabeza.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+overhead+march">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="20" cy="50" r="6" fill="#2d3a82"/><line x1="20" y1="56" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="20" y1="55" x2="20" y2="70" stroke="#2d3a82" stroke-width="4"/><line x1="80" y1="60" x2="85" y2="80" stroke="#2d3a82" stroke-width="4"/><text x="50" y="30" text-anchor="middle" font-size="10" fill="#e53935" font-weight="bold">1+ min</text></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Plancha extendida</h3>
+        <p class="en">Planks (1+ min con cadera)</p>
+        <p class="desc">Más de un minuto. Opcional: agregar movimiento de cadera de lado a lado.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=plank+with+hip+dips">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p4">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><rect x="35" y="30" width="30" height="25" fill="#7b1fa2"/><text x="50" y="47" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+KG</text><line x1="50" y1="55" x2="30" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p4">Fase 4</span>
+        <h3>Abs con peso añadido</h3>
+        <p class="en">Add Weight to Phase 3</p>
+        <p class="desc">Chaleco o kettlebell más pesada sobre cualquier ejercicio de Fase 3.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+ab+workout">▶ Ver demo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== BACK ==================== -->
+<section id="back">
+  <h2>🔙 Espalda</h2>
+  <div class="grid">
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="50" cy="40" r="7" fill="#2d3a82"/><line x1="50" y1="47" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="47" x2="20" y2="35" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="47" x2="80" y2="35" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="30" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="70" y2="60" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Superman</h3>
+        <p class="en">Supermans</p>
+        <p class="desc">Boca abajo, despegas brazos y piernas del piso simultáneamente.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=superman+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="20" r="7" fill="#2d3a82"/><line x1="30" y1="27" x2="50" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="40" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="60" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="40" x2="40" y2="65" stroke="#2d3a82" stroke-width="4"/><rect x="33" y="65" width="14" height="10" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Remo inclinado con mochila</h3>
+        <p class="en">Backpack Bent-Over Rows</p>
+        <p class="desc">Inclinado hacia adelante, tiras la mochila hacia el abdomen.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=backpack+bent+over+row">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="50" cy="55" r="6" fill="#2d3a82"/><line x1="50" y1="61" x2="50" y2="78" stroke="#2d3a82" stroke-width="3"/><path d="M 50 60 Q 25 50 20 70" stroke="#2d3a82" stroke-width="3" fill="none"/><path d="M 50 60 Q 75 50 80 70" stroke="#2d3a82" stroke-width="3" fill="none"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Ángeles de nieve invertidos</h3>
+        <p class="en">Reverse Snow Angels</p>
+        <p class="desc">Boca abajo, brazos en forma de "T" que recorren hasta arriba y abajo del cuerpo.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=reverse+snow+angels+back">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="15" y1="15" x2="15" y2="85" stroke="#a0a8c0" stroke-width="4"/><line x1="85" y1="15" x2="85" y2="85" stroke="#a0a8c0" stroke-width="4"/><circle cx="35" cy="45" r="7" fill="#2d3a82"/><line x1="35" y1="52" x2="40" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="35" y1="45" x2="15" y2="40" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Tirones isométricos en marco de puerta</h3>
+        <p class="en">Doorway Isometric Pulls</p>
+        <p class="desc">Te agarras de un marco de puerta y tiras hacia atrás manteniendo tensión.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=doorway+isometric+pull">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p1">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="20" x2="90" y2="20" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="20" x2="40" y2="35" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="20" x2="60" y2="35" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="45" r="7" fill="#2d3a82"/><line x1="50" y1="52" x2="50" y2="70" stroke="#2d3a82" stroke-width="4"/><path d="M 30 60 Q 25 70 40 80" stroke="#e53935" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p1">Fase 1</span>
+        <h3>Dominadas asistidas con banda</h3>
+        <p class="en">Pull-Ups/Chin-Ups (band assisted)</p>
+        <p class="desc">Dominada con banda elástica como ayuda para reducir parte del peso corporal.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=band+assisted+pull+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="25" r="7" fill="#2d3a82"/><line x1="30" y1="32" x2="55" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="50" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="40" x2="40" y2="70" stroke="#2d3a82" stroke-width="4"/><circle cx="40" cy="75" r="7" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Remo a un brazo con kettlebell</h3>
+        <p class="en">Single-Arm Kettlebell Rows</p>
+        <p class="desc">Inclinado, apoyado en silla con una mano, tiras la kettlebell con la otra.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=single+arm+kettlebell+row">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="25" r="7" fill="#2d3a82"/><line x1="30" y1="32" x2="55" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="60" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="75" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="40" y1="40" x2="20" y2="55" stroke="#2d3a82" stroke-width="3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Buenos días / bisagra de cadera</h3>
+        <p class="en">Hip Hinge / Good Mornings</p>
+        <p class="desc">De pie, bajas torso doblando solo la cadera, espalda recta. Con mochila o sin peso.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=good+mornings+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><rect x="50" y="55" width="45" height="25" fill="#a0a8c0"/><circle cx="20" cy="35" r="7" fill="#2d3a82"/><line x1="20" y1="42" x2="55" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="60" y2="55" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Extensiones de espalda</h3>
+        <p class="en">Back Extensions</p>
+        <p class="desc">Sobre el borde de un sofá o banco, bajas y subes el torso usando la lumbar.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=back+extension+at+home">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="20" x2="90" y2="20" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="20" x2="40" y2="35" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="20" x2="60" y2="35" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="45" r="8" fill="#2d3a82"/><line x1="50" y1="53" x2="50" y2="75" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="75" x2="40" y2="90" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="75" x2="60" y2="90" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Dominadas (pull-ups)</h3>
+        <p class="en">Pull-Ups</p>
+        <p class="desc">Agarre prono (palmas hacia afuera), subes el cuerpo hasta pasar la barra con el mentón.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=pull+ups+form">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p2">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="15" y1="15" x2="15" y2="85" stroke="#a0a8c0" stroke-width="4"/><line x1="85" y1="15" x2="85" y2="85" stroke="#a0a8c0" stroke-width="4"/><line x1="15" y1="40" x2="85" y2="40" stroke="#7b1fa2" stroke-width="4"/><line x1="30" y1="40" x2="35" y2="55" stroke="#2d3a82" stroke-width="3"/><line x1="70" y1="40" x2="65" y2="55" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="60" r="7" fill="#2d3a82"/><line x1="50" y1="60" x2="50" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p2">Fase 2</span>
+        <h3>Remo invertido en marco de puerta</h3>
+        <p class="en">Inverted Doorway Rows</p>
+        <p class="desc">Toalla pasada por una manilla resistente, cuerpo inclinado, tiras hacia el pecho. O usa barra/anillas.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=inverted+row+towel+door">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="25" cy="45" r="6" fill="#2d3a82"/><line x1="25" y1="51" x2="80" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="25" y1="51" x2="25" y2="75" stroke="#2d3a82" stroke-width="4"/><circle cx="55" cy="40" r="7" fill="#7b1fa2"/><line x1="55" y1="47" x2="55" y2="58" stroke="#7b1fa2" stroke-width="3"/><line x1="80" y1="60" x2="90" y2="80" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Renegade rows con kettlebell</h3>
+        <p class="en">Kettlebell Renegade Rows</p>
+        <p class="desc">En plancha apoyado en dos kettlebells, remo alterno con cada brazo.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+renegade+row">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="25" r="7" fill="#2d3a82"/><line x1="30" y1="32" x2="55" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="55" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="55" x2="75" y2="85" stroke="#2d3a82" stroke-width="4"/><circle cx="35" cy="55" r="6" fill="#7b1fa2"/><circle cx="45" cy="68" r="6" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Gorilla rows con kettlebell</h3>
+        <p class="en">Kettlebell Gorilla Rows</p>
+        <p class="desc">Dos kettlebells en el piso, te inclinas y alternas remos como un gorila.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+gorilla+row">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="30" cy="25" r="7" fill="#2d3a82"/><line x1="30" y1="32" x2="55" y2="50" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="50" x2="55" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="55" y1="50" x2="80" y2="55" stroke="#2d3a82" stroke-width="4"/><circle cx="85" cy="58" r="8" fill="#7b1fa2"/><path d="M 65 30 Q 75 25 85 35" stroke="#e53935" stroke-width="2" fill="none" stroke-dasharray="3,3"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Bisagras de cadera explosivas</h3>
+        <p class="en">Explosive Hip Hinges (KB)</p>
+        <p class="desc">Bisagra de cadera con kettlebell en versión rápida y explosiva.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=explosive+kettlebell+hip+hinge">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="80" x2="90" y2="80" stroke="#888" stroke-width="2"/><circle cx="50" cy="40" r="7" fill="#2d3a82"/><line x1="50" y1="47" x2="50" y2="65" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="47" x2="30" y2="25" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="47" x2="70" y2="25" stroke="#2d3a82" stroke-width="4"/><rect x="25" y="15" width="50" height="10" fill="#7b1fa2"/><line x1="50" y1="65" x2="30" y2="60" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="65" x2="70" y2="60" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Superman con peso</h3>
+        <p class="en">Weighted Supermans</p>
+        <p class="desc">Superman sosteniendo una mochila ligera sobre la cabeza.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+superman+exercise">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="55" r="7" fill="#2d3a82"/><line x1="50" y1="62" x2="50" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="50" y2="20" stroke="#2d3a82" stroke-width="4"/><circle cx="50" cy="15" r="9" fill="#7b1fa2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Clean & press con kettlebell</h3>
+        <p class="en">Kettlebell Clean and Press</p>
+        <p class="desc">Movimiento compuesto: del piso al hombro, luego sobre la cabeza.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=kettlebell+clean+press">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="20" x2="90" y2="20" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="20" x2="40" y2="35" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="20" x2="60" y2="35" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="45" r="8" fill="#2d3a82"/><rect x="40" y="53" width="20" height="20" fill="#7b1fa2"/><text x="50" y="68" text-anchor="middle" font-size="9" fill="white" font-weight="bold">+KG</text><line x1="50" y1="73" x2="40" y2="90" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="73" x2="60" y2="90" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Dominadas con chaleco de peso</h3>
+        <p class="en">Weighted Pull-Ups/Chin-Ups</p>
+        <p class="desc">Dominadas con chaleco de peso o cinturón con disco.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+pull+ups">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="80" r="7" fill="#2d3a82"/><line x1="50" y1="73" x2="50" y2="40" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="30" y2="55" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="40" x2="70" y2="55" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Handstand push-ups</h3>
+        <p class="en">Handstand Push-Ups</p>
+        <p class="desc">Parada de manos contra la pared, bajas y subes. Trabajo masivo de hombros y trapecios.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=handstand+push+up+wall">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p3">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><line x1="10" y1="30" x2="90" y2="30" stroke="#7b1fa2" stroke-width="4"/><line x1="40" y1="30" x2="40" y2="45" stroke="#2d3a82" stroke-width="3"/><line x1="60" y1="30" x2="60" y2="45" stroke="#2d3a82" stroke-width="3"/><circle cx="50" cy="55" r="7" fill="#2d3a82"/><line x1="50" y1="62" x2="85" y2="62" stroke="#2d3a82" stroke-width="4"/><rect x="80" y="55" width="15" height="15" fill="#a0a8c0"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p3">Fase 3</span>
+        <h3>Remo invertido con pies elevados</h3>
+        <p class="en">Inverted Rows (feet up)</p>
+        <p class="desc">Pies sobre silla/banco, tiras pecho hacia barra. Chaleco de peso opcional.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=feet+elevated+inverted+row">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <div class="card" data-phase="p4">
+      <div class="icon-box">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="20" r="7" fill="#2d3a82"/><rect x="35" y="30" width="30" height="25" fill="#7b1fa2"/><text x="50" y="47" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+KG</text><line x1="50" y1="55" x2="30" y2="85" stroke="#2d3a82" stroke-width="4"/><line x1="50" y1="55" x2="70" y2="85" stroke="#2d3a82" stroke-width="4"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="phase-badge p4">Fase 4</span>
+        <h3>Espalda con peso añadido</h3>
+        <p class="en">Add Weight to Phase 3</p>
+        <p class="desc">Chaleco de peso o kettlebells más pesadas en cualquier movimiento de Fase 3.</p>
+        <a class="video-link" target="_blank" href="https://www.youtube.com/results?search_query=weighted+vest+back+workout">▶ Ver demo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c=>{
+        if(f==='all' || c.dataset.phase===f){
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

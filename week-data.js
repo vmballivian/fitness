@@ -25,9 +25,10 @@ const WEEK_VIC = {
       {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},
       {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
     ]},
-  4: {title:'Dorsales + core brace', ex:[
+  4: {title:'Espalda + cadena posterior + core', ex:[
       {n:'Jalón al pecho con banda', s:'banda 30 kg, anclada arriba', r:'al fallo', v:'Band+Lat+Pulldown'},
       {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
+      {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 8kg, cadera atrás, isquio + glúteo', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
       {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
     ]},
   5: {title:'Piernas + grip + core', ex:[

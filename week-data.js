@@ -38,7 +38,7 @@ const WEEK_VIC = {
       {n:'Halo con giro, de rodillas', s:'KB 8kg, círculo a la cabeza + torso gira, tall kneeling', r:'al fallo/lado', v:'Kneeling+Kettlebell+Halo'}
     ]},
   6: {title:'Tren superior empuje + tracción', ex:[
-      {n:'Flexión a remo', s:'push-up to row, KB 8kg', r:'al fallo', v:'Push-Up+to+Row'},
+      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
       {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
       {n:'Remo en TRX, pies adelante', s:'cuanto más horizontal, más duro', r:'al fallo', v:'TRX+Inverted+Row+feet+elevated'},
       {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}

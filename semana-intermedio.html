@@ -48,6 +48,9 @@
   .note strong{color:var(--soccer)}
   .vid{display:inline-flex;align-items:center;background:var(--accent);color:white;
     text-decoration:none;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px}
+  .altblock{margin:12px 0 0;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:10px;padding:8px 16px}
+  .altblock .alth{font-size:.82rem;font-weight:700;color:var(--soccer);margin:2px 0 2px}
+  .altblock .ex{border-bottom-color:#cce8cf}
 </style>
 </head>
 <body>
@@ -62,95 +65,35 @@
   Cada ejercicio al fallo (hasta no poder una rep más con forma). Rotas entre los 3 movimientos, descanso corto, vueltas que entren en 20 min. Marca tu día en el <a href="calendario.html">calendario</a>.
 </div>
 
-<main>
+<main id="week"></main>
 
-  <!-- LUNES -->
-  <div class="day soccer">
-    <div class="day-head">
-      <div><div class="num">Lunes</div><h2>Fútbol</h2></div>
-      <span class="pill soccer">⚽ Cancha PM</span>
-    </div>
-    <div class="note">La cancha es tu pierna y cardio del día. Si quieres algo en la mañana, unas flexiones y nada más.</div>
-  </div>
-
-  <!-- MARTES -->
-  <div class="day">
-    <div class="day-head">
-      <div><div class="num">Martes</div><h2>Empuje + tracción + core</h2></div>
-      <span class="pill go">🔥 Hazlo</span>
-    </div>
-    <div class="day-body">
-      <div class="ex"><p class="ex-name">Sentadilla profunda + press de hombro 1 brazo <small>squat to press, KB 8kg</small></p><span class="reps">al fallo/brazo</span></div>
-      <div class="ex"><p class="ex-name">Gorilla rows <small>KB 8kg</small></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Flexiones con toque de hombro <small>push-up shoulder taps</small></p><span class="reps">al fallo</span></div>
-    </div>
-  </div>
-
-  <!-- MIÉRCOLES -->
-  <div class="day soccer">
-    <div class="day-head">
-      <div><div class="num">Miércoles</div><h2>Swing + remo + core ⚽</h2></div>
-      <span class="pill soccer">⚽ Cancha PM</span>
-    </div>
-    <div class="day-body">
-      <div class="ex"><p class="ex-name">KB swing 1 brazo <small>KB 8kg</small></p><span class="reps">al fallo/lado</span></div>
-      <div class="ex"><p class="ex-name">Remo en TRX <small>TRX rows</small></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Giro ruso con KB <small>russian twists, KB 8kg</small></p><span class="reps">al fallo</span></div>
-    </div>
-  </div>
-
-  <!-- JUEVES -->
-  <div class="day">
-    <div class="day-head">
-      <div><div class="num">Jueves</div><h2>Dorsales + core brace</h2></div>
-      <span class="pill go">🔥 Hazlo</span>
-    </div>
-    <div class="day-body">
-      <div class="ex"><p class="ex-name">Jalón al pecho con banda <small>banda 30 kg, anclada arriba</small><span class="gap">faltaba</span><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Band+Lat+Pulldown+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Face pull con banda o TRX <small>banda 20 kg, salud de hombro</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Band+TRX+Face+Pull+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Hollow hold <small>abdomen apretado, lumbar al suelo</small><span class="gap">faltaba</span><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Hollow+Hold+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-    </div>
-  </div>
-
-  <!-- VIERNES -->
-  <div class="day">
-    <div class="day-head">
-      <div><div class="num">Viernes</div><h2>Piernas + grip + core</h2></div>
-      <span class="pill go">🦵 Hazlo</span>
-    </div>
-    <div class="day-body">
-      <div class="ex"><p class="ex-name">Bulgarian split squat <small>una pierna, lejos del fútbol</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Bulgarian+Split+Squat+exercise+form">▶</a></p><span class="reps">al fallo/pierna</span></div>
-      <div class="ex"><p class="ex-name">Sentadilla con salto sosteniendo KB <small>goblet jump squat, KB 8kg</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Goblet+Jump+Squat+kettlebell+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Suitcase carry alternado <small>caminas cargado un lado a la vez, cambias de mano</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Suitcase+Carry+kettlebell+exercise+form">▶</a></p><span class="reps">30–40m/lado</span></div>
-      <div class="ex"><p class="ex-name">Curl alternado 1 brazo, foco agarre <small>KB 8kg o banda, aprietas el mango</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Single+Arm+Bicep+Curl+grip+exercise+form">▶</a></p><span class="reps">al fallo/brazo</span></div>
-      <div class="ex"><p class="ex-name">Halo con giro, de rodillas <small>KB 8kg, círculo a la cabeza + torso gira, tall kneeling</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Kneeling+Kettlebell+Halo+exercise+form">▶</a></p><span class="reps">al fallo/lado</span></div>
-    </div>
-  </div>
-
-  <!-- SÁBADO -->
-  <div class="day">
-    <div class="day-head">
-      <div><div class="num">Sábado</div><h2>Tren superior empuje + tracción</h2></div>
-      <span class="pill go">⚡ Hazlo</span>
-    </div>
-    <div class="day-body">
-      <div class="note" style="padding:0 0 8px;font-size:.82rem">Piernas descansan (vienen del viernes). Hoy todo arriba.</div>
-      <div class="ex"><p class="ex-name">Flexión a remo <small>push-up to row, KB 8kg</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Push-Up+to+Row+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Pike push-up con pies en TRX <small>empuje de hombro, sustituye handstand</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=TRX+Pike+Push-Up+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Remo en TRX, pies adelante <small>cuanto más horizontal, más duro</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=TRX+Inverted+Row+feet+elevated+exercise+form">▶</a></p><span class="reps">al fallo</span></div>
-      <div class="ex"><p class="ex-name">Plancha con remo alternado <small>single-KB plank row, anti-rotación, KB 8kg</small><a class="vid" target="_blank" href="https://www.youtube.com/results?search_query=Single+Kettlebell+Plank+Row+exercise+form">▶</a></p><span class="reps">al fallo/lado</span></div>
-    </div>
-  </div>
-
-  <!-- DOMINGO -->
-  <div class="day rest">
-    <div class="day-head">
-      <div><div class="num">Domingo</div><h2>Descanso</h2></div>
-    </div>
-    <div class="note">Caminata, movilidad, foam roll. Recuperas las piernas del viernes.</div>
-  </div>
-
-</main>
+<script src="week-data.js"></script>
+<script>
+  const DOW = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const ORDER = [1,2,3,4,5,6,0];
+  const exRow = e => {
+    const sub = e.s ? '<small>'+e.s+'</small>' : '';
+    const vid = e.v ? '<a class="vid" target="_blank" href="https://www.youtube.com/results?search_query='+e.v+'+exercise+form">▶</a>' : '';
+    const reps = e.r ? '<span class="reps">'+e.r+'</span>' : '';
+    return '<div class="ex"><p class="ex-name">'+e.n+' '+sub+vid+'</p>'+reps+'</div>';
+  };
+  document.getElementById('week').innerHTML = ORDER.map(d=>{
+    const p = WEEK_VIC[d];
+    const cls = p.rest ? ' rest' : (p.soccer ? ' soccer' : '');
+    const pill = p.rest ? '' : (p.soccer
+      ? '<span class="pill soccer">⚽ Cancha PM</span>'
+      : '<span class="pill go">🔥 Hazlo</span>');
+    let body;
+    if(p.rest){
+      body = '<div class="note">'+(p.note||'Descanso. Movilidad, caminata, hidrátate.')+'</div>';
+    } else {
+      let inner = p.ex.map(exRow).join('');
+      if(p.alt){ inner += '<div class="altblock"><p class="alth">🏃 Si no hay fútbol, haz este circuito</p>'+p.alt.map(exRow).join('')+'</div>'; }
+      body = '<div class="day-body">'+inner+'</div>';
+    }
+    return '<div class="day'+cls+'"><div class="day-head"><div><div class="num">'+DOW[d]+'</div><h2>'+p.title+'</h2></div>'+pill+'</div>'+body+'</div>';
+  }).join('');
+</script>
 
 </body>
 </html>

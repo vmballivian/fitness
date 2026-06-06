@@ -4,8 +4,11 @@
 // Índice de día: 0=domingo, 1=lunes ... 5=viernes, 6=sábado.
 
 const WEEK_VIC = {
-  1: {title:'Fútbol ⚽', soccer:true, ex:[
-      {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'}
+  1: {title:'Fútbol ⚽ + tren superior AM', soccer:true, ex:[
+      {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'},
+      {n:'Flexiones', s:'en la mañana, lejos del partido — pecho y tríceps', r:'al fallo', v:'Push-Up'},
+      {n:'Remo en TRX', s:'mañana, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
+      {n:'Plancha', s:'core, sin cargar piernas para la cancha', r:'al fallo', v:'Plank+hold'}
     ], alt:[
       {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
       {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'},

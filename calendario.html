@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache">
 <title>Calendario de Entrenos</title>
 <style>
   :root{
@@ -137,13 +138,13 @@
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet">
   <p class="ttl" id="sheetDate">día</p>
-  <h2 id="sheetTitle">Entreno <span id="sheetBadge"></span></h2>
+  <h2 id="sheetTitle"><span id="sheetTitleText">Entreno</span> <span id="sheetBadge"></span></h2>
   <div id="sheetBody"></div>
   <textarea id="note" placeholder="Notas: reps, cómo te sentiste..."></textarea>
   <div class="actions" id="actions"></div>
 </div>
 
-<script src="week-data.js"></script>
+<script>document.write('<scr'+'ipt src="week-data.js?v='+Date.now()+'"><\/scr'+'ipt>');</script>
 <script>
   // ===== Usuario =====
   const params = new URLSearchParams(location.search);
@@ -231,7 +232,7 @@
     const entry = data[key] || {};
     const [y,m,dd]=key.split('-').map(Number);
     document.getElementById('sheetDate').textContent = DOWN[dowOf(key)]+' '+dd+' '+MONTHS[m-1];
-    document.getElementById('sheetTitle').firstChild.textContent = plan.title+' ';
+    document.getElementById('sheetTitleText').textContent = plan.title;
     const badge = document.getElementById('sheetBadge'); badge.className=''; badge.textContent='';
     if(entry.done){ badge.className='badge done'; badge.textContent='✓ hecho'; }
     else if(!plan.rest && key<todayKey){ badge.className='badge miss'; badge.textContent='no lo hiciste'; }

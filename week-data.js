@@ -12,7 +12,8 @@ const WEEK_VIC = {
     ], alt:[
       {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
       {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'},
-      {n:'Burpees', s:'cardio', r:'al fallo', v:'Burpees'}
+      {n:'Remo en TRX', s:'TRX row, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
+      {n:'Plancha con arrastre de KB', s:'plank KB pass-through, arrastras la pesa de lado a lado por debajo, anti-rotación, KB 8kg', r:'al fallo', v:'Plank+Kettlebell+Pass+Through+drag'}
     ]},
   2: {title:'Empuje + tracción + core', ex:[
       {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 8kg', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},

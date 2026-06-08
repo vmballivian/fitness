@@ -144,6 +144,8 @@
   <div class="actions" id="actions"></div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>document.write('<scr'+'ipt src="sync-config.js?v='+Date.now()+'"><\/scr'+'ipt>');</script>
 <script>document.write('<scr'+'ipt src="week-data.js?v='+Date.now()+'"><\/scr'+'ipt>');</script>
 <script>
   // ===== Usuario =====
@@ -175,6 +177,39 @@
   const load = () => { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e){ return {}; } };
   const save = d => localStorage.setItem(STORE, JSON.stringify(d));
   let data = load();
+
+  // ===== Sync en la nube (Supabase) =====
+  // Cada marca lleva un sello de tiempo (ts). Al juntar dos aparatos, gana la marca más nueva.
+  // Sin internet o sin config, la app sigue 100% funcional con el guardado local.
+  const stamp = o => { o.ts = Date.now(); return o; };
+  function mergeData(a, b){
+    const out = {};
+    for(const k of new Set([...Object.keys(a||{}), ...Object.keys(b||{})])){
+      const ea = a && a[k], eb = b && b[k];
+      out[k] = (ea && eb) ? (((ea.ts||0) >= (eb.ts||0)) ? ea : eb) : (ea || eb);
+    }
+    return out;
+  }
+  const SB = (window.SUPABASE_URL && window.SUPABASE_ANON_KEY && window.supabase)
+    ? window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY) : null;
+
+  async function pullRemote(){
+    if(!SB) return;
+    try{
+      const { data:row, error } = await SB.from('fitlog').select('data').eq('user_id', user).maybeSingle();
+      if(error) return;
+      if(row && row.data){ data = mergeData(data, row.data); save(data); render(); }
+    }catch(e){}
+  }
+  async function pushRemote(){
+    if(!SB) return;
+    try{
+      const { data:row } = await SB.from('fitlog').select('data').eq('user_id', user).maybeSingle();
+      const merged = mergeData((row && row.data) || {}, data);
+      data = merged; save(data);
+      await SB.from('fitlog').upsert({ user_id:user, data:merged, updated_at:new Date().toISOString() });
+    }catch(e){}
+  }
 
   const now = new Date(); now.setHours(0,0,0,0);
   const todayKey = ymd(now);
@@ -254,19 +289,20 @@
 
     document.getElementById('note').value = entry.note || '';
     const act=document.getElementById('actions'); act.innerHTML='';
+    const commit=(entry)=>{ data[key]=stamp(entry); save(data); pushRemote(); close(); render(); };
     if(plan.rest){
       const b=document.createElement('button'); b.className='btn note'; b.textContent='Guardar nota';
-      b.onclick=()=>{ const n=noteVal(); if(n) data[key]={done:false,note:n}; else delete data[key]; save(data); close(); render(); };
+      b.onclick=()=>commit({done:false, note:noteVal()});
       act.appendChild(b);
     } else if(entry.done){
       const b1=document.createElement('button'); b1.className='btn note'; b1.textContent='Guardar nota';
-      b1.onclick=()=>{ data[key]={done:true, note:noteVal()}; save(data); close(); render(); };
+      b1.onclick=()=>commit({done:true, note:noteVal()});
       const b2=document.createElement('button'); b2.className='btn undo'; b2.textContent='Desmarcar';
-      b2.onclick=()=>{ const n=noteVal(); if(n) data[key]={done:false,note:n}; else delete data[key]; save(data); close(); render(); };
+      b2.onclick=()=>commit({done:false, note:noteVal()});
       act.appendChild(b1); act.appendChild(b2);
     } else {
       const b=document.createElement('button'); b.className='btn done'; b.textContent='✓ Marcar hecho';
-      b.onclick=()=>{ data[key]={done:true, note:noteVal()}; save(data); close(); render(); };
+      b.onclick=()=>commit({done:true, note:noteVal()});
       act.appendChild(b);
     }
 
@@ -284,6 +320,7 @@
   document.getElementById('next').onclick=()=>{ viewM++; if(viewM>11){viewM=0;viewY++;} render(); };
 
   render();
+  pullRemote();
 </script>
 
 </body>

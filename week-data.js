@@ -30,7 +30,7 @@ const WEEK_VIC = {
       {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
     ]},
   4: {title:'Espalda + cadena posterior + core', ex:[
-      {n:'Dominadas en viga', s:'colgado de la viga del quincho, agarre firme, baja controlado', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Dominadas en viga', s:'viga del quincho, baja controlado. Hasta el 3 de julio deja 1 rep en reserva (adaptación de codos), después al fallo', r:'al fallo (~5)', v:'Pull-Up'},
       {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
       {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 8kg, cadera atrás, isquio + glúteo', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
       {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
@@ -45,7 +45,7 @@ const WEEK_VIC = {
   6: {title:'Tren superior empuje + tracción', ex:[
       {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
       {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
-      {n:'Remo en TRX, pies adelante', s:'cuanto más horizontal, más duro', r:'al fallo', v:'TRX+Inverted+Row+feet+elevated'},
+      {n:'Dominadas en viga', s:'2ª dosis semanal, la frecuencia sube tu máximo. Hasta el 3 de julio deja 1 rep en reserva, después al fallo', r:'al fallo (~5)', v:'Pull-Up'},
       {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
     ]},
   0: {title:'Descanso', rest:true, ex:[], note:'Caminata, movilidad, foam roll. Recuperas las piernas del viernes.'}

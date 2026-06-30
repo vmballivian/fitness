@@ -61,14 +61,13 @@ const WEEK_FIO = {
       {n:'Patada de glúteo con banda (de pie)', s:'de pie, banda 20 kg', r:'12/pierna', v:'standing+glute+kickback+band'},
       {n:'Gato-camello', s:'movilidad de espalda en 4 apoyos', r:'8 lentas', v:'cat+cow+stretch+pregnancy'}
     ]},
-  2: {title:'Estiramiento guiado + movilidad', ex:[
-      {n:'Gato-camello', s:'en 4 apoyos, mueve la columna lento, sin arquear de más', r:'8–10 lentas', v:'cat+cow+stretch+pregnancy'},
-      {n:'Círculos de cadera en 4 apoyos', s:'dibuja círculos grandes con la cadera, suelta la espalda baja', r:'5/lado', v:'quadruped+hip+circles+prenatal'},
-      {n:'Estiramiento de flexor de cadera (zancada arrodillada)', s:'rodilla en el suelo, empuja la cadera al frente, mano en silla', r:'30 seg/lado', v:'kneeling+hip+flexor+stretch+pregnancy'},
-      {n:'Figura 4 sentada en silla', s:'tobillo sobre la rodilla contraria, inclínate suave, estira el glúteo', r:'30 seg/lado', v:'seated+figure+four+glute+stretch'},
-      {n:'Postura del niño (rodillas abiertas)', s:'rodillas anchas para dar espacio a la panza, respira hondo', r:'45–60 seg', v:'childs+pose+wide+knees+pregnancy'},
-      {n:'Estiramiento de costado sentada', s:'sube un brazo y alárgate hacia el lado, abre las costillas', r:'20 seg/lado', v:'seated+side+stretch'},
-      {n:'Respiración diafragmática + suelo pélvico', s:'inhala soltando la panza, exhala activando suave el suelo pélvico', r:'5 respiraciones', v:'diaphragmatic+breathing+pelvic+floor+pregnancy'}
+  2: {title:'Fuerza full body (banda pesada)', ex:[
+      {n:'Sentadilla goblet con banda', s:'pisas la banda y sostienes el lazo al pecho, baja en 3 seg, banda 30 kg', r:'12–15', v:'goblet+squat+resistance+band'},
+      {n:'Press de pecho con banda (de pie)', s:'banda anclada detrás a la altura del pecho, controla la vuelta, banda 30 kg', r:'12–15', v:'standing+band+chest+press'},
+      {n:'Remo a una mano con banda', s:'de pie, banda 30 kg, aprieta el omóplato sin girar el torso', r:'12/lado', v:'single+arm+band+row'},
+      {n:'Step-up a escalón con apoyo', s:'sube sin impulso ni salto, baja lento, mano en la pared', r:'10/pierna', v:'step+up+exercise+pregnancy'},
+      {n:'Sentadilla isométrica en pared', s:'wall sit, espalda a la pared, muslos firmes, respira normal (no aguantes)', r:'30–45 seg', v:'wall+sit+pregnancy'},
+      {n:'Gato-camello', s:'para soltar la espalda al terminar', r:'8 lentas', v:'cat+cow+stretch+pregnancy'}
     ]},
   3: {title:'Tren superior (de pie)', ex:[
       {n:'Press de pecho con banda (de pie)', s:'banda anclada detrás a la altura del pecho, empuja al frente, banda 20 kg', r:'12–15', v:'standing+band+chest+press'},
@@ -76,11 +75,13 @@ const WEEK_FIO = {
       {n:'Press de hombro con banda', s:'banda 10 kg, no aguantes la respiración', r:'10–12', v:'standing+band+shoulder+press'},
       {n:'Pallof press con banda (anti-rotación)', s:'de pie de lado a la banda, empuja al frente sin dejar que el torso gire', r:'10/lado', v:'pallof+press+band+exercise'}
     ]},
-  4: {title:'Core seguro + suelo pélvico', ex:[
-      {n:'Bird dog', s:'brazo y pierna opuestos, sin arquear', r:'8/lado', v:'bird+dog+exercise'},
-      {n:'Plancha lateral con rodilla apoyada', s:'corta, sin forzar', r:'20 seg/lado', v:'modified+side+plank+knee'},
-      {n:'Inclinación pélvica de pie', s:'pelvic tilt contra la pared', r:'12 lentas', v:'standing+pelvic+tilt'},
-      {n:'Kegels (suelo pélvico)', s:'aprieta y suelta, respira normal', r:'10', v:'kegel+pelvic+floor+pregnancy'}
+  4: {title:'Core fuerte + anti-rotación', ex:[
+      {n:'Plancha inclinada (manos en sofá o banco)', s:'manos elevadas para no cargar la línea alba; baja si ves que la panza hace "cono"', r:'15–25 seg', v:'incline+plank+pregnancy'},
+      {n:'Pallof press con banda', s:'de lado a la banda, banda 30 kg, empuja al frente sin dejar que el torso gire', r:'12/lado', v:'pallof+press+band'},
+      {n:'Suitcase carry', s:'caminas cargando peso moderado de un solo lado, costillas sobre la cadera, exhala al cargar', r:'30–40 m/lado', v:'suitcase+carry+exercise'},
+      {n:'Plancha lateral con rodilla apoyada', s:'aguanta más tiempo que antes, sin forzar', r:'30 seg/lado', v:'modified+side+plank+knee'},
+      {n:'Bird dog con pausa', s:'brazo y pierna opuestos, 2 seg arriba, sin arquear', r:'10/lado', v:'bird+dog+exercise'},
+      {n:'Kegels (suelo pélvico)', s:'aprieta y suelta lento, respira normal', r:'12', v:'kegel+pelvic+floor+pregnancy'}
     ]},
   5: {title:'Cadena posterior + full body', ex:[
       {n:'Bisagra de cadera con banda', s:'banda bajo los pies, lleva la cadera atrás con la espalda recta y sube apretando glúteos, banda 20 kg', r:'12', v:'standing+band+hip+hinge+good+morning'},
@@ -89,15 +90,14 @@ const WEEK_FIO = {
       {n:'Elevación de talones de pie', s:'sube a las puntas y baja lento, ayuda circulación y calambres', r:'15', v:'standing+calf+raises'},
       {n:'Marcha de pie (rodilla arriba)', s:'core y equilibrio, de pie, sube una rodilla a la vez', r:'30–40 seg', v:'standing+marches+exercise'}
     ]},
-  6: {title:'Caminata + yoga prenatal', walk:true, ex:[
-      {n:'Caminata', s:'paso cómodo, deberías poder conversar', r:'20 min', v:'prenatal+walking'},
-      {n:'Gato-camello', s:'para arrancar el yoga, suelta la espalda', r:'8 lentas', v:'cat+cow+stretch+pregnancy'},
-      {n:'Perro mirando abajo (suave)', s:'desde 4 apoyos lleva la cadera atrás y arriba, talones relajados, sin forzar', r:'3 respiraciones', v:'gentle+downward+dog+prenatal'},
-      {n:'Zancada baja (low lunge) con apoyo', s:'abre la cadera, mano en silla, pecho arriba', r:'30 seg/lado', v:'low+lunge+prenatal+yoga'},
-      {n:'Postura de la diosa', s:'pies anchos, baja en sentadilla amplia y abre las rodillas, prepara para el parto', r:'30–40 seg', v:'goddess+pose+pregnancy'},
+  6: {title:'Caminata firme + piernas y glúteos + yoga corto', walk:true, ex:[
+      {n:'Caminata a ritmo vivo o en cuesta', s:'con algo de esfuerzo, pero deberías poder hablar', r:'25–30 min', v:'brisk+prenatal+walking'},
+      {n:'Zancada inversa con apoyo', s:'pasos atrás controlados, sin salto, mano en silla o pared', r:'10/pierna', v:'reverse+lunge+pregnancy'},
+      {n:'Patada de glúteo con banda (de pie)', s:'de pie, banda 30 kg, aprieta el glúteo arriba', r:'15/pierna', v:'standing+glute+kickback+band'},
+      {n:'Abducción de cadera de pie con banda', s:'banda 20 kg en los tobillos, abre la pierna al lado sin girar la cadera', r:'15/lado', v:'standing+hip+abduction+band'},
+      {n:'Elevación de talones lenta', s:'sube y baja en 3 seg, ayuda circulación y calambres', r:'20', v:'standing+calf+raises'},
+      {n:'Postura de la diosa (vuelta a la calma)', s:'pies anchos, baja en sentadilla amplia y abre las rodillas', r:'40 seg', v:'goddess+pose+pregnancy'},
       {n:'Mariposa sentada', s:'plantas de los pies juntas, deja caer las rodillas, espalda larga', r:'45–60 seg', v:'butterfly+bound+angle+pose+pregnancy'},
-      {n:'Torsión sentada suave', s:'gira abriendo (mira por encima del hombro), sin comprimir la panza', r:'20 seg/lado', v:'gentle+seated+twist+pregnancy'},
-      {n:'Paloma modificada / figura 4', s:'estira glúteo y cadera, en el suelo o sentada en silla', r:'30 seg/lado', v:'modified+pigeon+pose+pregnancy'},
       {n:'Relajación de lado izquierdo', s:'recostada sobre el lado izquierdo con un cojín entre las rodillas, respira lento', r:'2–3 min', v:'left+side+relaxation+pregnancy'}
     ]},
   0: {title:'Descanso', rest:true, ex:[], note:'Descanso total. Camina suave si te apetece, hidrátate y duerme bien.'}

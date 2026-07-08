@@ -7,23 +7,23 @@ const WEEK_VIC = {
   1: {title:'Fútbol ⚽ + tren superior AM', soccer:true, ex:[
       {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'},
       {n:'Flexiones', s:'en la mañana, lejos del partido — pecho y tríceps', r:'al fallo', v:'Push-Up'},
-      {n:'Remo en TRX', s:'mañana, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
+      {n:'Remo en TRX', s:'mañana, tracción de espalda; si la 1ª serie pasa de 12-13, pies más adelante o elevados', r:'al fallo', v:'TRX+Rows'},
       {n:'Plancha', s:'core, sin cargar piernas para la cancha', r:'al fallo', v:'Plank+hold'}
     ], alt:[
-      {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+      {n:'KB swing 1 brazo', s:'KB 8kg + banda pisada sobre los cuernos, suma resistencia arriba', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
       {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'},
       {n:'Remo en TRX', s:'TRX row, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
       {n:'Plancha con arrastre de KB', s:'plank KB pass-through, arrastras la pesa de lado a lado por debajo, anti-rotación, KB 8kg', r:'al fallo', v:'Plank+Kettlebell+Pass+Through+drag'}
     ]},
   2: {title:'Empuje + tracción + core', ex:[
-      {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 8kg', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},
-      {n:'Gorilla rows', s:'KB 8kg', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
-      {n:'Flexiones con toque de hombro', s:'push-up shoulder taps', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
+      {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 8kg + mochila cargada puesta (o tempo: baja en 3 seg + pausa abajo)', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},
+      {n:'Gorilla rows', s:'KB 8kg, baja en 3 seg + pausa arriba (o mochila puesta)', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
+      {n:'Flexiones con toque de hombro', s:'push-up shoulder taps, pies elevados (o mochila puesta)', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
     ]},
   3: {title:'Swing + remo + core ⚽', soccer:true, ex:[
-      {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
-      {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
-      {n:'Giro ruso con KB', s:'russian twists, KB 8kg', r:'al fallo', v:'Russian+Twists+kettlebell'}
+      {n:'KB swing 1 brazo', s:'KB 8kg + banda pisada sobre los cuernos, suma resistencia arriba (o snatch 1 brazo)', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+      {n:'Remo en TRX', s:'TRX rows; si la 1ª serie pasa de 12-13, pies más adelante o elevados', r:'al fallo', v:'TRX+Rows'},
+      {n:'Giro ruso con KB', s:'russian twists, KB 8kg, piernas elevadas y brazos más extendidos', r:'al fallo', v:'Russian+Twists+kettlebell'}
     ], alt:[
       {n:'Devil press 1 brazo', s:'burpee + snatch, KB 8kg', r:'al fallo/brazo', v:'Single+KB+Devil+Press'},
       {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},

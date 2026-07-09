@@ -157,6 +157,11 @@
   const WEEK = user==='fio' ? WEEK_FIO : WEEK_VIC;
   const STORE = user==='fio' ? 'fitlog_fio_v2' : 'fitlog_v3';
 
+  // Overrides por fecha exacta (pisan la plantilla solo esos días, ej. semana de viaje)
+  const OVERRIDES = (user==='vic' && typeof OVERRIDES_VIC!=='undefined') ? OVERRIDES_VIC
+                  : (user==='fio' && typeof OVERRIDES_FIO!=='undefined') ? OVERRIDES_FIO : {};
+  const planFor = key => OVERRIDES[key] || WEEK[dowOf(key)];
+
   // ===== Cabecera por usuario =====
   document.getElementById('who').textContent = user==='fio' ? '🤰 Fio · plan prenatal (2º trimestre)' : '🏋️ Vic · alta intensidad';
   const nav = document.getElementById('nav');
@@ -228,7 +233,7 @@
     for(let i=0;i<lead;i++){ const c=document.createElement('div'); c.className='cell empty'; grid.appendChild(c); }
     for(let day=1; day<=daysInMonth; day++){
       const key = viewY+'-'+String(viewM+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
-      const plan = WEEK[dowOf(key)];
+      const plan = planFor(key);
       const entry = data[key];
       const c = document.createElement('div'); c.className='cell';
       let mark='';
@@ -251,7 +256,7 @@
     document.getElementById('statMonth').textContent = keys.filter(k=>k.startsWith(mpref)).length;
     let streak=0; let d=new Date(now);
     const isDone = dd => data[ymd(dd)] && data[ymd(dd)].done;
-    const isRest = dd => WEEK[dd.getDay()].rest;
+    const isRest = dd => planFor(ymd(dd)).rest;
     if(!isDone(d) && !isRest(d)) d.setDate(d.getDate()-1);
     while(true){
       if(isDone(d)){ streak++; d.setDate(d.getDate()-1); }
@@ -263,7 +268,7 @@
 
   function openSheet(key){
     selKey = key;
-    const plan = WEEK[dowOf(key)];
+    const plan = planFor(key);
     const entry = data[key] || {};
     const [y,m,dd]=key.split('-').map(Number);
     document.getElementById('sheetDate').textContent = DOWN[dowOf(key)]+' '+dd+' '+MONTHS[m-1];

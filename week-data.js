@@ -3,41 +3,52 @@
 // Lo leen: calendario.html (lo que ves al tocar un día) y semana-*.html.
 // Índice de día: 0=domingo, 1=lunes ... 5=viernes, 6=sábado.
 
-// ===== SEMANA DE VIAJE Costa Rica (14-20 jul 2026) — TEMPORAL =====
-// Solo bandas 10/20/30/40 en hotel, sin fútbol/KB/TRX.
-// RESTAURAR la semana normal al volver: git checkout semana-normal-pre-viaje -- week-data.js
 const WEEK_VIC = {
-  1: {title:'Vuelo de ida ✈️', rest:true, ex:[], note:'Semana de viaje CR. Sale 05:35, día entero de avión Lisboa → São José. Descanso. Camina en la escala, movilidad de cadera y hombros, hidrátate.'},
-  2: {title:'Empuje (banda) — viaje', ex:[
-      {n:'Press de pecho con banda de pie', s:'banda anclada atrás a la altura del pecho, empuja al frente, banda 30-40 kg', r:'al fallo', v:'standing+band+chest+press'},
-      {n:'Press de hombro con banda', s:'pisas la banda, empujas arriba, banda 20-30 kg', r:'al fallo', v:'standing+band+shoulder+press'},
-      {n:'Elevaciones laterales con banda', s:'pisas la banda, subes al lado hasta el hombro, deltoides medio, banda 10-20 kg', r:'al fallo', v:'Band+Lateral+Raise'},
-      {n:'Flexiones', s:'peso corporal, cierra pecho y tríceps', r:'al fallo', v:'Push-Up'}
+  1: {title:'Fútbol ⚽ + tren superior AM', soccer:true, ex:[
+      {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'},
+      {n:'Flexiones', s:'en la mañana, lejos del partido — pecho y tríceps', r:'al fallo', v:'Push-Up'},
+      {n:'Remo en TRX', s:'mañana, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
+      {n:'Plancha', s:'core, sin cargar piernas para la cancha', r:'al fallo', v:'Plank+hold'}
+    ], alt:[
+      {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+      {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'},
+      {n:'Remo en TRX', s:'TRX row, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
+      {n:'Plancha con arrastre de KB', s:'plank KB pass-through, arrastras la pesa de lado a lado por debajo, anti-rotación, KB 8kg', r:'al fallo', v:'Plank+Kettlebell+Pass+Through+drag'}
     ]},
-  3: {title:'Piernas (banda) — viaje', ex:[
-      {n:'Sentadilla goblet con banda', s:'pisas la banda, lazo al pecho, baja controlado, banda 30-40 kg', r:'al fallo', v:'goblet+squat+resistance+band'},
-      {n:'Zancada búlgara con banda', s:'pie de atrás en la cama, pisas la banda con el de adelante, banda 20-30 kg', r:'al fallo/pierna', v:'bulgarian+split+squat+band'},
-      {n:'Peso muerto rumano con banda', s:'pisas la banda, cadera atrás, isquio y glúteo, banda 30-40 kg', r:'al fallo', v:'band+romanian+deadlift'},
-      {n:'Abducción de cadera de pie con banda', s:'banda en los tobillos, abres la pierna al lado, glúteo medio, banda 20 kg', r:'al fallo/lado', v:'standing+hip+abduction+band'}
+  2: {title:'Empuje + tracción + core', ex:[
+      {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 8kg', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},
+      {n:'Elevaciones laterales con banda', s:'pisas la banda, subes los brazos al lado hasta la altura del hombro, deltoides medio, banda 10 kg', r:'al fallo', v:'Band+Lateral+Raise'},
+      {n:'Gorilla rows', s:'KB 8kg', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
+      {n:'Flexiones con toque de hombro', s:'push-up shoulder taps', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
     ]},
-  4: {title:'Tracción / espalda (banda) — viaje', ex:[
-      {n:'Remo con banda de pie', s:'banda anclada al frente, jalas al abdomen, aprieta omóplatos, banda 30-40 kg', r:'al fallo', v:'standing+resistance+band+row'},
-      {n:'Pulldown con banda', s:'banda anclada alta en la puerta, jalas abajo, simula la dominada, banda 30 kg', r:'al fallo', v:'band+lat+pulldown'},
-      {n:'Face pull con banda', s:'banda anclada al frente, tira a la cara abriendo codos, banda 20 kg', r:'al fallo', v:'band+face+pull'},
-      {n:'Pull-apart con banda', s:'banda al frente con brazos estirados, la abres, espalda alta, banda 10-20 kg', r:'al fallo', v:'band+pull+apart'}
+  3: {title:'Swing + remo + core ⚽', soccer:true, ex:[
+      {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+      {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
+      {n:'Giro ruso con KB', s:'russian twists, KB 8kg', r:'al fallo', v:'Russian+Twists+kettlebell'}
+    ], alt:[
+      {n:'Devil press 1 brazo', s:'burpee + snatch, KB 8kg', r:'al fallo/brazo', v:'Single+KB+Devil+Press'},
+      {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},
+      {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
     ]},
-  5: {title:'Cadena posterior + core (banda) — viaje', ex:[
-      {n:'Peso muerto rumano con banda', s:'pisas la banda, bisagra de cadera, día pesado de isquio/glúteo, banda 40 kg', r:'al fallo', v:'band+romanian+deadlift'},
-      {n:'Good morning con banda', s:'banda bajo los pies y sobre los hombros, bisagra con espalda recta, banda 30 kg', r:'al fallo', v:'banded+good+morning'},
-      {n:'Pallof press con banda', s:'anclada al lado, empujas al frente sin girar el torso, anti-rotación, banda 20 kg', r:'al fallo/lado', v:'pallof+press+band'},
-      {n:'Plancha', s:'peso corporal, abdomen y glúteo apretados', r:'al fallo', v:'Plank+hold'}
+  4: {title:'Tren superior empuje + tracción', ex:[
+      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
+      {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
+      {n:'Dominadas en viga', s:'2ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
     ]},
-  6: {title:'Full body metcon (banda) — viaje', ex:[
-      {n:'Thruster con banda', s:'pisas la banda, sentadilla + press arriba en un movimiento, banda 20-30 kg', r:'al fallo', v:'band+thruster+squat+to+press'},
-      {n:'Remo con banda', s:'tracción, aprieta la espalda, banda 30 kg', r:'al fallo', v:'standing+resistance+band+row'},
-      {n:'Flexiones', s:'peso corporal, empuje. Rota los 3 sin parar, RPE 8-9, tipo AMRAP 20 min', r:'al fallo', v:'Push-Up'}
+  5: {title:'Piernas + grip + core', ex:[
+      {n:'Bulgarian split squat', s:'una pierna, lejos del fútbol', r:'al fallo/pierna', v:'Bulgarian+Split+Squat'},
+      {n:'Sentadilla con salto sosteniendo KB', s:'goblet jump squat, KB 8kg', r:'al fallo', v:'Goblet+Jump+Squat+kettlebell'},
+      {n:'Suitcase carry alternado', s:'cargado un lado a la vez, cambias de mano', r:'30–40m/lado', v:'Suitcase+Carry+kettlebell'},
+      {n:'Halo con giro, de rodillas', s:'KB 8kg, círculo a la cabeza + torso gira, tall kneeling', r:'al fallo/lado', v:'Kneeling+Kettlebell+Halo'}
     ]},
-  0: {title:'Vuelo de regreso ✈️ / Descanso', rest:true, ex:[], note:'Vuelo sale 19:05 desde CR. Descanso. Si te sientes bien en la mañana, movilidad suave o caminata firme antes del aeropuerto, nada al fallo.'}
+  6: {title:'Espalda + cadena posterior + core', ex:[
+      {n:'Dominadas en viga', s:'viga del quincho, baja controlado', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
+      {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 8kg, cadera atrás, isquio + glúteo', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
+      {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
+    ]},
+  0: {title:'Descanso', rest:true, ex:[], note:'Caminata, movilidad, foam roll. Recuperas las piernas del viernes.'}
 };
 
 // Fio: 24 semanas (2º trimestre), 32 años, muy buena condición física.
@@ -90,4 +101,41 @@ const WEEK_FIO = {
       {n:'Relajación de lado izquierdo', s:'recostada sobre el lado izquierdo con un cojín entre las rodillas, respira lento', r:'2–3 min', v:'left+side+relaxation+pregnancy'}
     ]},
   0: {title:'Descanso', rest:true, ex:[], note:'Descanso total. Camina suave si te apetece, hidrátate y duerme bien.'}
+};
+
+// ===== Overrides por FECHA (pisan la plantilla solo esos días exactos) =====
+// Semana de viaje Costa Rica (14-20 jul 2026): solo bandas 10/20/30/40 en hotel,
+// sin fútbol/KB/TRX. Al pasar el viaje, borra este bloque y queda la semana normal.
+const OVERRIDES_VIC = {
+  '2026-07-14': {title:'Vuelo de ida ✈️', rest:true, ex:[], note:'Semana de viaje CR. Sale 05:35, día entero de avión Lisboa → São José. Descanso. Camina en la escala, movilidad de cadera y hombros, hidrátate.'},
+  '2026-07-15': {title:'Empuje (banda) — viaje', ex:[
+      {n:'Press de pecho con banda de pie', s:'banda anclada atrás a la altura del pecho, empuja al frente, banda 30-40 kg', r:'al fallo', v:'standing+band+chest+press'},
+      {n:'Press de hombro con banda', s:'pisas la banda, empujas arriba, banda 20-30 kg', r:'al fallo', v:'standing+band+shoulder+press'},
+      {n:'Elevaciones laterales con banda', s:'pisas la banda, subes al lado hasta el hombro, deltoides medio, banda 10-20 kg', r:'al fallo', v:'Band+Lateral+Raise'},
+      {n:'Flexiones', s:'peso corporal, cierra pecho y tríceps', r:'al fallo', v:'Push-Up'}
+    ]},
+  '2026-07-16': {title:'Piernas (banda) — viaje', ex:[
+      {n:'Sentadilla goblet con banda', s:'pisas la banda, lazo al pecho, baja controlado, banda 30-40 kg', r:'al fallo', v:'goblet+squat+resistance+band'},
+      {n:'Zancada búlgara con banda', s:'pie de atrás en la cama, pisas la banda con el de adelante, banda 20-30 kg', r:'al fallo/pierna', v:'bulgarian+split+squat+band'},
+      {n:'Peso muerto rumano con banda', s:'pisas la banda, cadera atrás, isquio y glúteo, banda 30-40 kg', r:'al fallo', v:'band+romanian+deadlift'},
+      {n:'Abducción de cadera de pie con banda', s:'banda en los tobillos, abres la pierna al lado, glúteo medio, banda 20 kg', r:'al fallo/lado', v:'standing+hip+abduction+band'}
+    ]},
+  '2026-07-17': {title:'Tracción / espalda (banda) — viaje', ex:[
+      {n:'Remo con banda de pie', s:'banda anclada al frente, jalas al abdomen, aprieta omóplatos, banda 30-40 kg', r:'al fallo', v:'standing+resistance+band+row'},
+      {n:'Pulldown con banda', s:'banda anclada alta en la puerta, jalas abajo, simula la dominada, banda 30 kg', r:'al fallo', v:'band+lat+pulldown'},
+      {n:'Face pull con banda', s:'banda anclada al frente, tira a la cara abriendo codos, banda 20 kg', r:'al fallo', v:'band+face+pull'},
+      {n:'Pull-apart con banda', s:'banda al frente con brazos estirados, la abres, espalda alta, banda 10-20 kg', r:'al fallo', v:'band+pull+apart'}
+    ]},
+  '2026-07-18': {title:'Cadena posterior + core (banda) — viaje', ex:[
+      {n:'Peso muerto rumano con banda', s:'pisas la banda, bisagra de cadera, día pesado de isquio/glúteo, banda 40 kg', r:'al fallo', v:'band+romanian+deadlift'},
+      {n:'Good morning con banda', s:'banda bajo los pies y sobre los hombros, bisagra con espalda recta, banda 30 kg', r:'al fallo', v:'banded+good+morning'},
+      {n:'Pallof press con banda', s:'anclada al lado, empujas al frente sin girar el torso, anti-rotación, banda 20 kg', r:'al fallo/lado', v:'pallof+press+band'},
+      {n:'Plancha', s:'peso corporal, abdomen y glúteo apretados', r:'al fallo', v:'Plank+hold'}
+    ]},
+  '2026-07-19': {title:'Full body metcon (banda) — viaje', ex:[
+      {n:'Thruster con banda', s:'pisas la banda, sentadilla + press arriba en un movimiento, banda 20-30 kg', r:'al fallo', v:'band+thruster+squat+to+press'},
+      {n:'Remo con banda', s:'tracción, aprieta la espalda, banda 30 kg', r:'al fallo', v:'standing+resistance+band+row'},
+      {n:'Flexiones', s:'peso corporal, empuje. Rota los 3 sin parar, RPE 8-9, tipo AMRAP 20 min', r:'al fallo', v:'Push-Up'}
+    ]},
+  '2026-07-20': {title:'Vuelo de regreso ✈️ / Descanso', rest:true, ex:[], note:'Vuelo sale 19:05 desde CR. Descanso. Si te sientes bien en la mañana, movilidad suave o caminata firme antes del aeropuerto, nada al fallo.'}
 };

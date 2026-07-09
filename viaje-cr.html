@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>Viaje CR — Fitness</title>
+<style>
+  :root{
+    --navy:#0d5c5c;--navy-dark:#083f3f;--bg:#f5f6fa;--card:#fff;
+    --text:#1a1d2e;--muted:#6b7088;--accent:#ff9800;--fire:#e53935;
+    --travel:#5b6b8a;--done:#9aa1b8;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    background:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.5}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:white;padding:30px 24px;text-align:center}
+  header h1{margin:0;font-size:1.8rem;letter-spacing:-.5px}
+  header p{margin:8px 0 0;opacity:.88;font-size:.95rem}
+  .rule{max-width:760px;margin:20px auto 0;padding:14px 22px;background:#e6f4f1;
+    border:1px solid #a5d6c9;border-radius:10px;font-size:.9rem;color:#0a4b45;font-weight:600}
+  .rule small{display:block;margin-top:6px;font-weight:400;color:#356}
+  main{max-width:760px;margin:18px auto;padding:0 20px 48px}
+  .day{background:var(--card);border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);
+    margin-bottom:14px;overflow:hidden}
+  .day-head{background:var(--navy);color:white;padding:13px 20px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+  .day-head .num{font-size:.72rem;opacity:.75;letter-spacing:1px;text-transform:uppercase}
+  .day-head h2{margin:2px 0 0;font-size:1.12rem}
+  .pill{font-size:.65rem;padding:4px 11px;border-radius:20px;font-weight:700;
+    text-transform:uppercase;color:white;white-space:nowrap}
+  .pill.go{background:var(--fire)}
+  .pill.travel{background:var(--travel)}
+  .day.travel .day-head{background:var(--travel)}
+  .day-body{padding:14px 20px}
+  .ex{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid #eef0f5;gap:10px}
+  .ex:last-child{border-bottom:none}
+  .ex-name{font-weight:600;font-size:.95rem;margin:0}
+  .ex-name small{display:block;color:var(--muted);font-weight:400;font-style:italic;font-size:.76rem}
+  .reps{background:#ffe5e5;color:var(--fire);font-weight:700;padding:3px 10px;
+    border-radius:8px;font-size:.8rem;white-space:nowrap}
+  .load{display:inline-block;background:#0d5c5c;color:#fff;font-size:.62rem;padding:2px 7px;
+    border-radius:6px;font-weight:700;margin-left:6px;vertical-align:middle}
+  .note{padding:16px 20px;color:var(--muted);font-size:.9rem}
+  .vid{display:inline-flex;align-items:center;background:var(--accent);color:white;
+    text-decoration:none;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Semana de viaje · Costa Rica</h1>
+  <p>14 – 20 jul · solo bandas 10/20/30/40 · cuarto de hotel</p>
+  <a href="calendario.html?user=vic" style="display:inline-block;margin-top:8px;color:#bfe8e0;text-decoration:none;font-size:.85rem">← volver al calendario</a>
+</header>
+
+<div class="rule" style="max-width:760px">
+  Mismo formato de siempre: cada ejercicio al fallo, rotas entre los 3–4, vueltas que entren en 20 min. Esta semana sin fútbol y sin KB, todo con banda o peso corporal.
+  <small>Anclaje: los que dicen "anclada" van en la manija de una puerta cerrada o un door anchor. El resto se hacen pisando la banda, sin anclar nada. Las cargas (10/20/30/40) son un punto de partida sugerido, ajústalas a que el fallo caiga donde debe.</small>
+</div>
+
+<main id="week"></main>
+
+<script>
+  const DAYS = [
+    {dow:'Lunes 14', title:'Vuelo de ida ✈️', travel:true,
+      note:'Sale 05:35, día entero de avión Lisboa → São José. Descanso. Camina por el aeropuerto en la escala, movilidad de cadera y hombros, hidrátate mucho.'},
+
+    {dow:'Martes 15', title:'Empuje (banda)', ex:[
+      {n:'Press de pecho con banda de pie', s:'banda anclada atrás a la altura del pecho, empuja al frente', load:'30–40', r:'al fallo', v:'standing+band+chest+press'},
+      {n:'Press de hombro con banda', s:'pisas la banda, empujas arriba, no aguantes la respiración', load:'20–30', r:'al fallo', v:'standing+band+shoulder+press'},
+      {n:'Elevaciones laterales con banda', s:'pisas la banda, subes los brazos al lado hasta el hombro, deltoides medio', load:'10–20', r:'al fallo', v:'Band+Lateral+Raise'},
+      {n:'Flexiones', s:'peso corporal, cierra pecho y tríceps', r:'al fallo', v:'Push-Up'}
+    ]},
+
+    {dow:'Miércoles 16', title:'Piernas (banda)', ex:[
+      {n:'Sentadilla goblet con banda', s:'pisas la banda, sostienes el lazo al pecho, baja controlado', load:'30–40', r:'al fallo', v:'goblet+squat+resistance+band'},
+      {n:'Zancada búlgara con banda', s:'pie de atrás en la cama o silla, pisas la banda con el de adelante', load:'20–30', r:'al fallo/pierna', v:'bulgarian+split+squat+band'},
+      {n:'Peso muerto rumano con banda', s:'pisas la banda, cadera atrás, isquio y glúteo', load:'30–40', r:'al fallo', v:'band+romanian+deadlift'},
+      {n:'Abducción de cadera de pie con banda', s:'banda en los tobillos, abres la pierna al lado, glúteo medio', load:'20', r:'al fallo/lado', v:'standing+hip+abduction+band'}
+    ]},
+
+    {dow:'Jueves 17', title:'Tracción / espalda (banda)', ex:[
+      {n:'Remo con banda de pie', s:'banda anclada al frente, jalas al abdomen, aprieta omóplatos', load:'30–40', r:'al fallo', v:'standing+resistance+band+row'},
+      {n:'Pulldown con banda', s:'banda anclada alta en la puerta, jalas hacia abajo, simula la dominada', load:'30', r:'al fallo', v:'band+lat+pulldown'},
+      {n:'Face pull con banda', s:'banda anclada al frente, tira a la cara abriendo los codos, salud de hombro', load:'20', r:'al fallo', v:'band+face+pull'},
+      {n:'Pull-apart con banda', s:'banda al frente con brazos estirados, la abres, espalda alta', load:'10–20', r:'al fallo', v:'band+pull+apart'}
+    ]},
+
+    {dow:'Viernes 18', title:'Cadena posterior + core (banda)', ex:[
+      {n:'Peso muerto rumano con banda', s:'pisas la banda, bisagra de cadera, este es el día pesado de isquio/glúteo', load:'40', r:'al fallo', v:'band+romanian+deadlift'},
+      {n:'Good morning con banda', s:'banda bajo los pies y sobre los hombros, bisagra con espalda recta', load:'30', r:'al fallo', v:'banded+good+morning'},
+      {n:'Pallof press con banda', s:'anclada al lado, empujas al frente sin dejar que el torso gire, anti-rotación', load:'20', r:'al fallo/lado', v:'pallof+press+band'},
+      {n:'Plancha', s:'peso corporal, abdomen y glúteo apretados', r:'al fallo', v:'Plank+hold'}
+    ]},
+
+    {dow:'Sábado 19', title:'Full body metcon (banda + peso corporal)', ex:[
+      {n:'Thruster con banda', s:'pisas la banda, sentadilla + press arriba en un solo movimiento', load:'20–30', r:'al fallo', v:'band+thruster+squat+to+press'},
+      {n:'Remo con banda', s:'tracción, aprieta la espalda', load:'30', r:'al fallo', v:'standing+resistance+band+row'},
+      {n:'Flexiones', s:'peso corporal, empuje', r:'al fallo', v:'Push-Up'}
+    ], note:'Rota los 3 sin parar, descanso corto, RPE 8–9. Vueltas que entren en 20 min, tipo AMRAP. Es tu día metabólico, el que reemplaza el HIIT/swing.'},
+
+    {dow:'Domingo 20', title:'Vuelo de regreso ✈️', travel:true,
+      note:'Vuelo sale 19:05. Descanso. Si te sientes con ganas en la mañana, movilidad suave o una caminata firme antes de ir al aeropuerto, nada al fallo.'}
+  ];
+
+  const exRow = e => {
+    const sub = e.s ? '<small>'+e.s+'</small>' : '';
+    const vid = e.v ? '<a class="vid" target="_blank" href="https://www.youtube.com/results?search_query='+e.v+'+exercise+form">▶</a>' : '';
+    const load = e.load ? '<span class="load">banda '+e.load+'</span>' : '';
+    const reps = e.r ? '<span class="reps">'+e.r+'</span>' : '';
+    return '<div class="ex"><p class="ex-name">'+e.n+' '+load+sub+vid+'</p>'+reps+'</div>';
+  };
+
+  document.getElementById('week').innerHTML = DAYS.map(p=>{
+    const cls = p.travel ? ' travel' : '';
+    const pill = p.travel ? '<span class="pill travel">✈️ Viaje</span>' : '<span class="pill go">🔥 Hazlo</span>';
+    let body;
+    if(p.ex){
+      let inner = '<div class="day-body">'+p.ex.map(exRow).join('')+'</div>';
+      if(p.note) inner += '<div class="note">'+p.note+'</div>';
+      body = inner;
+    } else {
+      body = '<div class="note">'+p.note+'</div>';
+    }
+    return '<div class="day'+cls+'"><div class="day-head"><div><div class="num">'+p.dow+'</div><h2>'+p.title+'</h2></div>'+pill+'</div>'+body+'</div>';
+  }).join('');
+</script>
+
+</body>
+</html>

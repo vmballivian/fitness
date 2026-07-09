@@ -29,11 +29,11 @@ const WEEK_VIC = {
       {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},
       {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
     ]},
-  4: {title:'Espalda + cadena posterior + core', ex:[
-      {n:'Dominadas en viga', s:'viga del quincho, baja controlado', r:'al fallo (~5)', v:'Pull-Up'},
-      {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
-      {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 8kg, cadera atrás, isquio + glúteo', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
-      {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
+  4: {title:'Tren superior empuje + tracción', ex:[
+      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
+      {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
+      {n:'Dominadas en viga', s:'2ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
     ]},
   5: {title:'Piernas + grip + core', ex:[
       {n:'Bulgarian split squat', s:'una pierna, lejos del fútbol', r:'al fallo/pierna', v:'Bulgarian+Split+Squat'},
@@ -42,11 +42,11 @@ const WEEK_VIC = {
       {n:'Curl alternado 1 brazo, foco agarre', s:'KB 8kg o banda, aprietas el mango', r:'al fallo/brazo', v:'Single+Arm+Bicep+Curl+grip'},
       {n:'Halo con giro, de rodillas', s:'KB 8kg, círculo a la cabeza + torso gira, tall kneeling', r:'al fallo/lado', v:'Kneeling+Kettlebell+Halo'}
     ]},
-  6: {title:'Tren superior empuje + tracción', ex:[
-      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
-      {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
-      {n:'Dominadas en viga', s:'2ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
-      {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
+  6: {title:'Espalda + cadena posterior + core', ex:[
+      {n:'Dominadas en viga', s:'viga del quincho, baja controlado', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
+      {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 8kg, cadera atrás, isquio + glúteo', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
+      {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
     ]},
   0: {title:'Descanso', rest:true, ex:[], note:'Caminata, movilidad, foam roll. Recuperas las piernas del viernes.'}
 };

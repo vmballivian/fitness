@@ -32,6 +32,7 @@ const WEEK_VIC = {
   4: {title:'Tren superior empuje + tracción', ex:[
       {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
       {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
+      {n:'Elevaciones laterales con banda', s:'pisas la banda, subes los brazos al lado hasta la altura del hombro, deltoides medio, banda 10 kg', r:'al fallo', v:'Band+Lateral+Raise'},
       {n:'Dominadas en viga', s:'2ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
       {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
     ]},

@@ -40,7 +40,6 @@ const WEEK_VIC = {
       {n:'Bulgarian split squat', s:'una pierna, lejos del fútbol', r:'al fallo/pierna', v:'Bulgarian+Split+Squat'},
       {n:'Sentadilla con salto sosteniendo KB', s:'goblet jump squat, KB 8kg', r:'al fallo', v:'Goblet+Jump+Squat+kettlebell'},
       {n:'Suitcase carry alternado', s:'cargado un lado a la vez, cambias de mano', r:'30–40m/lado', v:'Suitcase+Carry+kettlebell'},
-      {n:'Curl alternado 1 brazo, foco agarre', s:'KB 8kg o banda, aprietas el mango', r:'al fallo/brazo', v:'Single+Arm+Bicep+Curl+grip'},
       {n:'Halo con giro, de rodillas', s:'KB 8kg, círculo a la cabeza + torso gira, tall kneeling', r:'al fallo/lado', v:'Kneeling+Kettlebell+Halo'}
     ]},
   6: {title:'Espalda + cadena posterior + core', ex:[

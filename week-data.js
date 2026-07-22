@@ -21,20 +21,20 @@ const WEEK_VIC = {
       {n:'Gorilla rows', s:'KB 8kg', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
       {n:'Flexiones con toque de hombro', s:'push-up shoulder taps', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
     ]},
-  3: {title:'Swing + remo + core ⚽', soccer:true, ex:[
-      {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
-      {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
-      {n:'Giro ruso con KB', s:'russian twists, KB 8kg', r:'al fallo', v:'Russian+Twists+kettlebell'}
+  3: {title:'Tren superior empuje + tracción ⚽', soccer:true, ex:[
+      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
+      {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
+      {n:'Dominadas en viga', s:'1ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
     ], alt:[
       {n:'Devil press 1 brazo', s:'burpee + snatch, KB 8kg', r:'al fallo/brazo', v:'Single+KB+Devil+Press'},
       {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},
       {n:'Sentadilla con salto', s:'jump squats', r:'al fallo', v:'Jump+Squats'}
     ]},
-  4: {title:'Tren superior empuje + tracción', ex:[
-      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
-      {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
-      {n:'Dominadas en viga', s:'2ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
-      {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
+  4: {title:'Swing + remo + core', ex:[
+      {n:'KB swing 1 brazo', s:'KB 8kg', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
+      {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
+      {n:'Giro ruso con KB', s:'russian twists, KB 8kg', r:'al fallo', v:'Russian+Twists+kettlebell'}
     ]},
   5: {title:'Piernas + grip + core', ex:[
       {n:'Bulgarian split squat', s:'una pierna, lejos del fútbol', r:'al fallo/pierna', v:'Bulgarian+Split+Squat'},
@@ -101,4 +101,43 @@ const WEEK_FIO = {
       {n:'Relajación de lado izquierdo', s:'recostada sobre el lado izquierdo con un cojín entre las rodillas, respira lento', r:'2–3 min', v:'left+side+relaxation+pregnancy'}
     ]},
   0: {title:'Descanso', rest:true, ex:[], note:'Descanso total. Camina suave si te apetece, hidrátate y duerme bien.'}
+};
+
+// ===== Overrides por FECHA (pisan la plantilla solo esos días exactos) =====
+// Registro histórico del viaje a Costa Rica (14-21 jul 2026): cada día muestra
+// lo que Vic REALMENTE hizo (según sus notas). 14, 20 y 21 fueron días de viaje
+// imposibles de entrenar → rest:true para que queden grises, no rojos.
+const OVERRIDES_VIC = {
+  '2026-07-14': {title:'Vuelo de ida ✈️', rest:true, ex:[], note:'Día entero de avión Lisboa → San José. Imposible entrenar.'},
+  '2026-07-15': {title:'Empuje (banda) — viaje', ex:[
+      {n:'Press de pecho con banda de pie', s:'banda anclada atrás a la altura del pecho', r:'al fallo', v:'standing+band+chest+press'},
+      {n:'Press de hombro con banda', s:'pisas la banda, empujas arriba', r:'al fallo', v:'standing+band+shoulder+press'},
+      {n:'Elevaciones laterales con banda', s:'deltoides medio', r:'al fallo', v:'Band+Lateral+Raise'},
+      {n:'Flexiones', s:'peso corporal, pecho y tríceps', r:'al fallo', v:'Push-Up'}
+    ]},
+  '2026-07-16': {title:'Tracción + swings — viaje', ex:[
+      {n:'Gorilla rows', s:'lo que hiciste ese día', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
+      {n:'Dominadas', s:'pull ups', r:'al fallo', v:'Pull-Up'},
+      {n:'KB swings', s:'', r:'al fallo', v:'Kettlebell+Swings'}
+    ]},
+  '2026-07-17': {title:'Hombro + piernas — viaje', ex:[
+      {n:'Press militar', s:'lo que hiciste ese día', r:'al fallo', v:'Overhead+Press'},
+      {n:'Halo', s:'', r:'al fallo', v:'Kettlebell+Halo'},
+      {n:'Bulgarian split squat', s:'', r:'al fallo/pierna', v:'Bulgarian+Split+Squat'},
+      {n:'Goblet squat', s:'', r:'al fallo', v:'Goblet+Squat'}
+    ]},
+  '2026-07-18': {title:'Empuje + tracción — viaje', ex:[
+      {n:'Flexiones', s:'lo que hiciste ese día', r:'al fallo', v:'Push-Up'},
+      {n:'Remo', s:'', r:'al fallo', v:'Band+Row'},
+      {n:'Barra', s:'dominadas en barra', r:'al fallo', v:'Pull-Up'},
+      {n:'Shoulder taps en altura', s:'', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
+    ]},
+  '2026-07-19': {title:'Espalda + cadena posterior — viaje', ex:[
+      {n:'Dominadas', s:'lo que hiciste ese día', r:'al fallo', v:'Pull-Up'},
+      {n:'Face pull', s:'', r:'al fallo', v:'Band+Face+Pull'},
+      {n:'Peso muerto 1 pierna', s:'single-leg RDL', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift'},
+      {n:'Hollow hold', s:'', r:'al fallo', v:'Hollow+Hold'}
+    ]},
+  '2026-07-20': {title:'Vuelo de regreso ✈️', rest:true, ex:[], note:'Vuelo San José → Lisboa. Imposible entrenar.'},
+  '2026-07-21': {title:'Llegada / recuperación ✈️', rest:true, ex:[], note:'Llegada del viaje, jet lag. Imposible entrenar.'}
 };

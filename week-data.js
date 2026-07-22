@@ -23,7 +23,7 @@ const WEEK_VIC = {
     ]},
   3: {title:'Tren superior empuje + tracción ⚽', soccer:true, ex:[
       {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
-      {n:'Pike push-up con pies en TRX', s:'empuje de hombro, sustituye handstand', r:'al fallo', v:'TRX+Pike+Push-Up'},
+      {n:'Press militar 1 brazo', s:'KB 16kg, de pie, hasta bloquear arriba; si salen menos de ~5 limpias, impulso suave de piernas (push press) y baja controlado', r:'al fallo/brazo', v:'Single+Arm+Kettlebell+Overhead+Press'},
       {n:'Dominadas en viga', s:'1ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
       {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 8kg', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
     ], alt:[

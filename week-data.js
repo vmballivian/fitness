@@ -6,9 +6,9 @@
 const WEEK_VIC = {
   1: {title:'Fútbol ⚽ + tren superior AM', soccer:true, ex:[
       {n:'Fútbol (partido en la noche)', s:'la cancha es tu pierna y cardio del día'},
-      {n:'Flexiones', s:'en la mañana, lejos del partido — pecho y tríceps', r:'al fallo', v:'Push-Up'},
-      {n:'Remo en TRX', s:'mañana, tracción de espalda', r:'al fallo', v:'TRX+Rows'},
-      {n:'Plancha', s:'core, sin cargar piernas para la cancha', r:'al fallo', v:'Plank+hold'}
+      {n:'Flexiones con mochila', s:'mochila con libros ~8-10kg bien ceñida, cuerpo en tabla; con 25+ corporales el fallo útil necesita carga', r:'al fallo', v:'Weighted+Push-Up+backpack'},
+      {n:'Remo en TRX', s:'mañana, tracción de espalda; si pasas de 12, adelanta los pies un zapato', r:'al fallo', v:'TRX+Rows'},
+      {n:'Plancha RKC', s:'tensión máxima: glúteos y puños apretados, codos "tirando" hacia los pies; el fallo llega en 30-45s con más trabajo real', r:'al fallo', v:'RKC+Plank'}
     ], alt:[
       {n:'KB swing 1 brazo', s:'KB 16kg, la cadera manda, el brazo es un gancho', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
       {n:'Zancadas con salto', s:'jump lunges', r:'al fallo', v:'Jump+Lunges'},
@@ -19,13 +19,13 @@ const WEEK_VIC = {
       {n:'Sentadilla profunda + press de hombro 1 brazo', s:'squat to press, KB 16kg, el impulso de las piernas ayuda al press', r:'al fallo/brazo', v:'Single+Arm+Dumbbell+Squat+to+Press'},
       {n:'Elevaciones laterales con banda', s:'pisas la banda, subes los brazos al lado hasta la altura del hombro, deltoides medio, banda 10 kg', r:'al fallo', v:'Band+Lateral+Raise'},
       {n:'Gorilla rows', s:'KB 16kg, espalda plana, remas alternando manos', r:'al fallo', v:'Gorilla+Rows+kettlebell'},
-      {n:'Flexiones con toque de hombro', s:'push-up shoulder taps', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
+      {n:'Flexiones con toque de hombro', s:'push-up shoulder taps, pies anchos, cero balanceo de cadera en el toque; si pasas cómodo de 18, mochila 5-8kg', r:'al fallo', v:'Push-Up+Shoulder+Taps'}
     ]},
   3: {title:'Tren superior empuje + tracción ⚽', soccer:true, ex:[
-      {n:'Flexiones', s:'pecho y tríceps, sin remo', r:'al fallo', v:'Push-Up'},
-      {n:'Press militar 1 brazo', s:'KB 16kg, de pie, hasta bloquear arriba; si salen menos de ~5 limpias, impulso suave de piernas (push press) y baja controlado', r:'al fallo/brazo', v:'Single+Arm+Kettlebell+Overhead+Press'},
-      {n:'Dominadas en viga', s:'1ª dosis semanal, la frecuencia sube tu máximo', r:'al fallo (~5)', v:'Pull-Up'},
-      {n:'Plancha con remo alternado', s:'single-KB plank row, anti-rotación, KB 16kg; si la cadera gira, vuelve al de 8', r:'al fallo/lado', v:'Single+Kettlebell+Plank+Row'}
+      {n:'Flexiones con mochila', s:'mochila con libros ~8-10kg; el empuje no compromete las piernas para la cancha', r:'al fallo', v:'Weighted+Push-Up+backpack'},
+      {n:'Press militar 1 brazo', s:'KB 16kg, escalera: ronda 1 estricto como test, y pasas a push press con bajada controlada cuando el estricto caiga a 3-4 limpias. Glúteos y abdomen apretados, costillas abajo', r:'al fallo/brazo', v:'Single+Arm+Kettlebell+Overhead+Press'},
+      {n:'Dominadas en viga', s:'1ª dosis semanal; en rondas tardías, banda 20kg colgada de la viga como asistencia cuando caigas a 2-3 reps (sostiene el volumen)', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Plancha con remo alternado', s:'single-KB plank row, KB 16kg, fallo TÉCNICO: la serie muere en la primera rep donde la cadera rota. Pies anchos, empuja el suelo con la mano de apoyo', r:'al fallo técnico/lado', v:'Single+Kettlebell+Plank+Row'}
     ], alt:[
       {n:'Devil press 1 brazo', s:'burpee + snatch, KB 16kg', r:'al fallo/brazo', v:'Single+KB+Devil+Press'},
       {n:'Mountain climbers', s:'cardio', r:'al fallo', v:'Mountain+Climbers+fast'},
@@ -34,18 +34,18 @@ const WEEK_VIC = {
   4: {title:'Swing + remo + core', ex:[
       {n:'KB swing 1 brazo', s:'KB 16kg, la cadera manda, el brazo es un gancho', r:'al fallo/lado', v:'Single-Arm+KB+Swings'},
       {n:'Remo en TRX', s:'TRX rows', r:'al fallo', v:'TRX+Rows'},
-      {n:'Giro ruso con KB', s:'russian twists, KB 16kg al pecho, giro controlado; si la lumbar reclama, vuelve al de 8', r:'al fallo', v:'Russian+Twists+kettlebell'}
+      {n:'Giro ruso con KB', s:'russian twists, KB 16kg, pies APOYADOS en el suelo, fallo TÉCNICO: termina en la primera rep donde el giro sale de los brazos o se redondea la lumbar. Gira el pecho, el KB solo acompaña', r:'al fallo técnico', v:'Russian+Twists+kettlebell'}
     ]},
   5: {title:'Piernas + grip + core', ex:[
-      {n:'Bulgarian split squat', s:'KB 16kg al pecho (goblet), una pierna, lejos del fútbol', r:'al fallo/pierna', v:'Bulgarian+Split+Squat+goblet'},
-      {n:'Sentadilla con salto sosteniendo KB', s:'goblet jump squat, KB 8kg — se queda liviano A PROPÓSITO: el objetivo es velocidad de salto y aterrizaje seguro', r:'al fallo', v:'Goblet+Jump+Squat+kettlebell'},
-      {n:'Suitcase carry alternado', s:'KB 16kg, cargado un lado a la vez, cambias de mano, torso derecho', r:'30–40m/lado', v:'Suitcase+Carry+kettlebell'},
-      {n:'Halo con giro, de rodillas', s:'KB 16kg, círculo a la cabeza + torso gira, tall kneeling; si el hombro reclama, vuelve al de 8', r:'al fallo/lado', v:'Kneeling+Kettlebell+Halo'}
+      {n:'Bulgarian split squat', s:'KB 16kg al pecho (goblet), torso levemente inclinado adelante, rodilla trasera baja en silencio. Test 1ª sesión: si superas 15 limpias por pierna en fresco, súmale la mochila con ~8-10kg', r:'al fallo/pierna', v:'Bulgarian+Split+Squat+goblet'},
+      {n:'Sentadilla con salto sosteniendo KB', s:'goblet jump squat, KB 8kg — liviano A PROPÓSITO: el estímulo es la velocidad. Fallo = pérdida visible de altura de salto, no quemazón', r:'al fallo', v:'Goblet+Jump+Squat+kettlebell'},
+      {n:'Suitcase carry alternado', s:'KB 16kg, loop continuo hasta FALLO DE AGARRE (la mano decide, no los metros), costillas apiladas, cero inclinación lateral. Anota metros o segundos por lado: esa es tu métrica', r:'hasta fallo de agarre/lado', v:'Suitcase+Carry+kettlebell'},
+      {n:'Halo con giro, de rodillas', s:'KB 8kg, círculo a la cabeza + torso gira, tall kneeling; órbita pegada a la cabeza, la serie termina cuando la órbita se agranda (con hombros fatigados, fallar aquí cuesta un golpe en el cráneo: el halo no necesita carga máxima)', r:'al fallo técnico/lado', v:'Kneeling+Kettlebell+Halo'}
     ]},
   6: {title:'Espalda + cadena posterior + core', ex:[
-      {n:'Dominadas en viga', s:'viga del quincho, baja controlado', r:'al fallo (~5)', v:'Pull-Up'},
-      {n:'Face pull con banda o TRX', s:'banda 20 kg, salud de hombro', r:'al fallo', v:'Band+TRX+Face+Pull'},
-      {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 16kg, cadera atrás, isquio + glúteo; si el equilibrio no da, apoya la punta del pie libre', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
+      {n:'Dominadas en viga', s:'viga del quincho, pecho a la viga, escápulas primero; en rondas tardías, banda 20kg de asistencia al caer a 2-3 reps', r:'al fallo (~5)', v:'Pull-Up'},
+      {n:'Face pull con banda o TRX', s:'banda 20 kg, tira hacia las orejas, termina con rotación externa, sin encoger trapecios; 15-20 limpias es la dosis correcta aquí', r:'al fallo', v:'Band+TRX+Face+Pull'},
+      {n:'Peso muerto rumano 1 pierna', s:'single-leg RDL, KB 16kg en mano contraria + dedos de la mano libre apoyados en pared o mueble (el apoyo elimina el límite de equilibrio y deja el 16 cargando el isquio de verdad). Cadera atrás y cuadrada', r:'al fallo/pierna', v:'Single+Leg+Romanian+Deadlift+kettlebell'},
       {n:'Hollow hold', s:'abdomen apretado, lumbar al suelo', r:'al fallo', v:'Hollow+Hold'}
     ]},
   0: {title:'Descanso', rest:true, ex:[], note:'Caminata, movilidad, foam roll. Recuperas las piernas del viernes.'}
